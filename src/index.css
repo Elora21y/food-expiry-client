@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+@plugin "daisyui"{
+  themes: light --default
+}
+@plugin "daisyui/theme" {
+  --color-primary: #FF6000;
+  --color-secondary: teal;
+}
+
+*{
+   font-family: "Quicksand", sans-serif;
+}
+.inter{
+  font-family: "Inter", sans-serif;
+}
