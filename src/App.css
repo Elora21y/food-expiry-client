@@ -1,3 +1,12 @@
+ul > li > a.active {
+  color: #fb9e3a;
+  text-decoration: underline;
+}
+ul > li > a:hover {
+  background-color: #fb9e3a;
+  color: white;
+}
+
 form > input:focus {
   border: 2px solid #f58f4b;
   outline: none;
@@ -23,8 +32,8 @@ form > select {
   color: rgb(109, 108, 108);
   font-size: 12px;
 }
-.orange-btn{
-  background-color: #FB9E3A;
+.orange-btn {
+  background-color: #fb9e3a;
   color: whitesmoke;
   border: none;
 }

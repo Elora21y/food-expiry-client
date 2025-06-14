@@ -10,8 +10,8 @@ import { IoLocationSharp } from "react-icons/io5";
 const Footer = () => {
   const {user} = use(AuthContext)
   return (
-    <div className=" bg-[#EB5B00] text-white p-10 text-sm max-w-7xl mx-auto px-5 sm:px-8">
-      <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5">
+    <div className=" bg-[#EB5B00] text-white ">
+      <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 p-10 text-sm max-w-7xl mx-auto px-5 sm:px-8">
         <aside className="max-w-[480px]">
           <div className="flex gap-1 items-center mb-2">
             <img src={icon} alt="" className="w-10 sm:w-12 md:w-14" />
@@ -87,8 +87,7 @@ const Footer = () => {
           </div>
           
           <p className="mt-3">
-            Copyright © {new Date().getFullYear()} - All right reserved by ACME
-            Industries Ltd
+            Copyright © {new Date().getFullYear()} - All right reserved by Fresh Alert
           </p>
         </div>
       </footer>

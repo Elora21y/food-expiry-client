@@ -187,7 +187,7 @@ const Register = () => {
               <p className="text-xs sm:text-[14px] text-center">
                 Already have an account? Please 
                 <Link
-                  to="/login"
+                  to="/auth/login"
                   state={location.state || "/"}
                   className="hover:underline text-primary font-semibold text-[13px]  sm:text-base"
                 > {"  "}Login

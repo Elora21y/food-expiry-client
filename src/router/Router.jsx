@@ -6,11 +6,14 @@ import Register from "../pages/Register";
 import AddFood from "../pages/AddFood";
 import Fridge from "../pages/Fridge";
 import MyItems from "../pages/MyItems";
+import AuthLayout from "../layout/AuthLayout";
+import Loading from "../shared/Loading";
 
 export const router = createBrowserRouter([
     {
         path : '/',
         Component : RootLayout,
+        hydrateFallbackElement:<Loading/>,
         children : [
             {
                 index : true,
@@ -27,15 +30,22 @@ export const router = createBrowserRouter([
             {
                 path : '/my-items',
                 element : <MyItems></MyItems>
-            },
+            }
+        ]
+    },
+    {
+        path : '/auth',
+        Component : AuthLayout,
+        hydrateFallbackElement : <Loading/>,
+        children : [
             {
-                path : '/login',
+                path : '/auth/login',
                 Component : Login
             },
             {
-                path : '/register',
+                path : '/auth/register',
                 Component : Register
             }
         ]
-    }
+    },
 ])

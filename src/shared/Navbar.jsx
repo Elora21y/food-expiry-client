@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import icon from "../../public/time.png";
+import { Tooltip  } from 'react-tooltip'
 
 const Navbar = () => {
   const { user, logOut, handleToggle, theme } = use(AuthContext);
@@ -33,18 +34,18 @@ const Navbar = () => {
       .catch((error) => toast.error(error));
   };
   return (
-    <div className=" bg-base-200 shadow  border-b border-primary/40">
+    <div className=" bg-base-200 shadow  border-b border-primary/30">
       <div className=" max-w-7xl mx-auto px-2 sm:px-8 xl:px-0 navbar p-0">
         <div className="navbar-start">
-          <img src={icon} alt="" className="w-8 sm:w-10" />
-          <h3 className="font-bold text-xl sm:text-2xl md:text-3xl">
+          <img src={icon} alt="" className="w-6 sm:w-10" />
+          <h3 className="font-bold text-lg sm:text-2xl md:text-3xl">
             Fresh<span className="text-primary">Alert</span>
           </h3>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-2 ">{links}</ul>
         </div>
-        <div className="navbar-end gap-1 ">
+        <div className="navbar-end gap-1 sm:gap-2 lg:gap-3 ">
           {user ? (
             <>
               <img
@@ -54,14 +55,22 @@ const Navbar = () => {
                     : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_htyN2AsYGqluVNNRR2AIXtpLph4pk608Uw&s"
                 }
                 alt="Profile Pic"
-                className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                className="w-8 h-8 sm:w-10 sm:h-10  md:w-12 md:h-12 rounded-full object-cover cursor-pointer"
                 data-tooltip-id="user-tooltip"
                 data-tooltip-content={`Hi! ${user?.displayName || "Guest"}`}
                 data-tooltip-place="bottom"
+                data-tooltip-delay-show={100}
+                data-tooltip-delay-hide={500}
               />
-              {/* <ReactTooltip id="user-tooltip" 
-      place="bottom"
-  style={{ backgroundColor: "#4caf50", color: "white", fontWeight: "500" }}/> */}
+              <Tooltip
+                id="user-tooltip"
+                place="bottom"
+                style={{
+                  backgroundColor: "#FA812F",
+                  color: "white",
+                  fontWeight: "500"
+                }}
+              />
 
               <button
                 onClick={handleLogout}
@@ -73,18 +82,21 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/login"
+                to="/auth/login"
                 className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-white "
               >
                 Login
               </Link>
-              <Link to="/register" className="btn btn-xs sm:btn-md orange-btn">
+              <Link
+                to="/auth/register"
+                className="btn btn-xs sm:btn-md orange-btn"
+              >
                 Register
               </Link>
             </>
           )}
 
-          <label className="swap swap-rotate -mr-3 ml-2">
+          <label className="swap swap-rotate -mr-3 sm:ml-2">
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
@@ -117,7 +129,7 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-sm lg:hidden "
+              className="btn bg-transparent border-0 btn-sm lg:hidden "
             >
               <HiOutlineMenuAlt3 size={20} />
             </div>

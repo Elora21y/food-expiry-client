@@ -18,13 +18,13 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
         toast.success("Successfully Login");
-        // navigate(`${location.state ?  location.state : '/'}`);
+        navigate(`${location.state ?  location.state : '/'}`);
       })
       .catch((error) => {
         if (error.code == "auth/invalid-credential")
@@ -98,7 +98,9 @@ const Login = () => {
                     )}
                   </button>
                 </div>
-<div><a className="link link-hover">Forgot password?</a></div>
+                <div>
+                  <a className="link link-hover">Forgot password?</a>
+                </div>
                 <button className="btn orange-btn mt-2" type="submit">
                   Login
                 </button>
@@ -146,7 +148,7 @@ const Login = () => {
               <p className="text-xs sm:text-[14px] text-center">
                 Don't have an account? Please
                 <Link
-                  to="/register"
+                  to="/auth/register"
                   state={location.state || "/"}
                   className="hover:underline text-primary font-semibold text-[13px] sm:text-base"
                 >
