@@ -63,7 +63,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="hero bg-base-100 min-h-screen text-accent">
+    <div className="hero min-h-screen text-accent">
       <div className="hero-content flex-col lg:flex-row-reverse gap-10">
         <div className="text-center lg:text-left hidden lg:flex">
           <Lottie
@@ -78,7 +78,7 @@ const Register = () => {
           <h2 className="text-center text-4xl lg:text-5xl font-bold mb-5 text-secondary">
             Please Register
           </h2>
-          <div className="card bg-base-200 shrink-0 shadow shadow-primary hover:shadow-md duration-500 transition-shadow">
+          <div className="card bg-base-300 shrink-0 shadow shadow-primary hover:shadow-md duration-500 transition-shadow">
             <div className="card-body w-[300px] sm:w-96 md:w-[400px]">
               {/* form */}
               <form onSubmit={handleRegister} className="fieldset">

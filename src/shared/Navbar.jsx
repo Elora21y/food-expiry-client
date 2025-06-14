@@ -2,83 +2,88 @@ import React, { use } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
+import icon from "../../public/time.png";
 
 const Navbar = () => {
-   const {user, handleToggle, theme } = use(AuthContext);
+  const { user, logOut, handleToggle, theme } = use(AuthContext);
   const links = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/fridge">Fridge</NavLink>
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/add-food">Add Food</NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-items">My Items</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
+  const handleLogout = () => {
+    logOut()
+      .then(() => toast.success("Successfully log out"))
+      .catch((error) => toast.error(error));
+  };
   return (
-      <div className=" bg-white/80 shadow ">
+    <div className=" bg-base-200 shadow  border-b border-primary/40">
       <div className=" max-w-7xl mx-auto px-2 sm:px-8 xl:px-0 navbar p-0">
         <div className="navbar-start">
-          {/* <img src={icon} alt="" className="w-8 sm:w-10 md:w-12" /> */}
-          <h3 className="font-bold text-secondary text-xl sm:text-2xl md:text-3xl">
-            FreshAlert<span className="text-primary">Hub</span>
+          <img src={icon} alt="" className="w-8 sm:w-10" />
+          <h3 className="font-bold text-xl sm:text-2xl md:text-3xl">
+            Fresh<span className="text-primary">Alert</span>
           </h3>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-2 ">{links}</ul>
         </div>
         <div className="navbar-end gap-1 ">
-        
-         
-          {/* {user ? (
+          {user ? (
             <>
-              <div className="dropdown">
-                <div tabIndex={0}>
-                  <img
-        src={
-          user?.photoURL
-            ? user.photoURL
-            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_htyN2AsYGqluVNNRR2AIXtpLph4pk608Uw&s"
-        }
-        alt="Profile Pic"
-        className="w-12 h-12 rounded-full object-cover cursor-pointer"
-        data-tooltip-id="user-tooltip"
-        data-tooltip-content={`Hi! ${user?.displayName || "Guest"}`}
-        data-tooltip-place="bottom"
-      />
-      <ReactTooltip id="user-tooltip" 
+              <img
+                src={
+                  user?.photoURL
+                    ? user.photoURL
+                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_htyN2AsYGqluVNNRR2AIXtpLph4pk608Uw&s"
+                }
+                alt="Profile Pic"
+                className="w-12 h-12 rounded-full object-cover cursor-pointer"
+                data-tooltip-id="user-tooltip"
+                data-tooltip-content={`Hi! ${user?.displayName || "Guest"}`}
+                data-tooltip-place="bottom"
+              />
+              {/* <ReactTooltip id="user-tooltip" 
       place="bottom"
-  style={{ backgroundColor: "#4caf50", color: "white", fontWeight: "500" }}/>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-1 max-w-54 p-4 shadow-lg right-0 space-y-2 text-center"
-                >
-                  <p className=" text-sm md:text-base">{user.email}</p>
-                  <Link
-                    // onClick={handleLogout}
-                    className="btn btn-xs md:btn-sm button-green "
-                  >
-                    Logout
-                  </Link>
-                </ul>
-              </div>
+  style={{ backgroundColor: "#4caf50", color: "white", fontWeight: "500" }}/> */}
+
+              <button
+                onClick={handleLogout}
+                className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-white "
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-            ...................................
+              <Link
+                to="/login"
+                className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-white "
+              >
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-xs sm:btn-md orange-btn">
+                Register
+              </Link>
             </>
-            )} */}
-            <Link
-              to="/login"
-              className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-white "
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="btn btn-xs sm:btn-md orange-btn"
-            >
-              Register
-            </Link>
-          
+          )}
+
           <label className="swap swap-rotate -mr-3 ml-2">
             {/* this hidden checkbox controls the state */}
             <input
@@ -91,7 +96,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-6 w-5 fill-current text-black"
+              className="swap-on h-6 w-5 fill-current text-white"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -118,7 +123,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-20 mt-3 w-40 p-2 shadow right-0"
+              className="menu menu-sm  dropdown-content bg-base-200 rounded-box z-20 mt-3 w-40 p-2 shadow right-0"
             >
               {links}
             </ul>

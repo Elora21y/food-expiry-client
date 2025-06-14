@@ -10,7 +10,8 @@
   --color-primary: #FB9E3A;
   --color-secondary: #454545;
    --color-accent: #4C585B; 
-   --color-base-200 : #FEF3E2
+   --color-accent-content: #4C585B; 
+   --color-base-300 : #FEF3E2
 }
 @plugin 'daisyui/theme'{
      name: "dark";
@@ -18,8 +19,8 @@
  --color-primary: #FB9E3A;
   --color-secondary: #FB9E3A;
    --color-accent: #5e686d; 
-   /* --color-accent-content: #FFFDF6;  */
-    --color-base-200 : #FEF3E2
+   --color-accent-content: #9AA6B2; 
+    --color-base-300 : #FEF3E2
   }
 
 *{
