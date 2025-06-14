@@ -2,15 +2,36 @@
 @import "tailwindcss";
 @plugin "daisyui"{
   themes: light --default
+  , dark --prefersdark
 }
 @plugin "daisyui/theme" {
-  --color-primary: #FF6000;
-  --color-secondary: teal;
+   name: "light";
+  default: true;
+  --color-primary: #FB9E3A;
+  --color-secondary: #454545;
+   --color-accent: #4C585B; 
+   --color-base-200 : #FEF3E2
 }
+@plugin 'daisyui/theme'{
+     name: "dark";
+  default: true;
+ --color-primary: #FB9E3A;
+  --color-secondary: #FB9E3A;
+   --color-accent: #5e686d; 
+   /* --color-accent-content: #FFFDF6;  */
+    --color-base-200 : #FEF3E2
+  }
 
 *{
    font-family: "Quicksand", sans-serif;
 }
-.inter{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
   font-family: "Inter", sans-serif;
 }
+
+

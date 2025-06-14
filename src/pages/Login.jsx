@@ -1,78 +1,113 @@
-import React from "react";
+import React, { use, useState } from "react";
 import lottieLogin from '../../public/lottie/login.json'
 import Lottie from "lottie-react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import toast from "react-hot-toast";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  // const { loginUser, signGoogle } = use(AuthContext);
-  // const location = useLocation();
-  // const from = location.state || "/";
-  // const navigate = useNavigate();
+  const { loginUser, googleLogin } = use(AuthContext);
+  const [showPass , setShowPass] = useState(false)
+  const navigate = useNavigate();
+  const location = useLocation()
+  // console.log(location.state)
 
-
-  const handleSignin = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const { email, password } = Object.fromEntries(formData.entries());
-    // console.log(formInformation)
-    // loginUser(email, password)
-    //   .then((result) => {
-    //     // console.log(result.user);
-    //     toast.success("Successfully Login");
-    //     navigate(from);
-    //   })
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //   });
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success('Successfully Login')
+        // navigate(`${location.state ?  location.state : '/'}`);
+      })
+      .catch((error) => {
+         if (error.code == "auth/invalid-credential")
+          return toast.error("Incorrect email or password");
+        if (error.code == "auth/invalid-email")
+          return toast.error("Please enter your email");
+        if (error.code == "auth/missing-password")
+          return toast.error("Please enter your password");
+        toast.error("Something went wrong. Please try again.");
+      });
   };
 
-  // const handleGoogleLogin = () => {
-  //   signGoogle()
-  //     .then((result) => {
-  //       console.log(result);
-  //       navigate(from)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // };
+  const handleGoogleLogin = () =>{
+      googleLogin().then(() => {
+              toast.success('Successfully Login')
+              navigate(`${location.state ?  location.state : '/'}`);
+            })
+            .catch((error) => {
+              toast.error(error)
+            });
+    }
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <Lottie animationData={lottieLogin} loop={true} />
+    <div className="hero bg-base-200 min-h-screen text-accent">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-10">
+        <div className="text-center lg:text-left hidden lg:flex">
+          <Lottie animationData={lottieLogin} loop={true} style={{
+            maxWidth:'520px'
+          }}/>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <div className="card-body">
-            <form onSubmit={handleSignin}>
-              <fieldset className="fieldset">
-                <label className="label">Email</label>
-                <input
-                  type="email"
-                  className="input"
-                  placeholder="Email"
-                  name="email"
-                />
-                <label className="label">Password</label>
-                <input
-                  type="password"
-                  className="input"
-                  placeholder="Password"
-                  name="password"
-                />
-                <div>
-                  <a className="link link-hover">Forgot password?</a>
-                </div>
-                <button className="btn btn-neutral mt-4">Signin</button>
-              </fieldset>
+        <div>
+        <h2 className="text-center text-4xl lg:text-5xl font-bold mb-5 text-secondary">
+          Please Login
+        </h2>
+        <div className="card bg-primary shrink-0 shadow shadow-primary hover:shadow-md duration-500 transition-shadow">
+          <div className="card-body text-secondary-content w-[300px] sm:w-96 md:w-[400px]">
+            {/* form */}
+            <form onSubmit={handleLogin} className="fieldset">
+              {/* email */}
+              <label className="label">Email</label>
+              <input
+                type="email"
+                className="input bg-white w-full"
+                placeholder="Email"
+                name="email"
+              />
+              {/* password */}
+              <div className="relative">
+                <label htmlFor="password" className="block">
+                  Password
+                </label>
+                  <input
+                    type={`${showPass ? "text" : "password"}`}
+                    name="password"
+                    placeholder="Password"
+                className="input w-full border-2 border-primary-300 focus:border-[#88d66ce8] focus:outline-none focus:ring-4 focus:ring-[#88d66c5b] bg-white placeholder:text-gray-300 placeholder:text-xs"
+                  />
+                  <button
+                    onClick={() => setShowPass(!showPass)}
+                    type="button"
+                    className="absolute text-gray-400 btn btn-xs btn-ghost z-10 right-1 top-6 hover:bg-white"
+                  >
+                    {showPass ? (
+                      <FaRegEyeSlash size={15} />
+                    ) : (
+                      <FaRegEye size={15} />
+                    )}
+                  </button>
+              </div>
+              <div>
+                <a className="link link-hover">Forgot password?</a>
+              </div>
+              <button className="btn button-green bg-[#FF6000] border-0" type="submit">Login</button>
             </form>
-
-            <div className="divider">OR</div>
+            {/* social login */}
+            <div className="flex items-center my-3 space-x-1">
+              <div className="flex-1 h-px sm:w-16 bg-primary"></div>
+              <p className=" text-sm text-center">OR</p>
+              <div className="flex-1 h-px sm:w-16 bg-primary"></div>
+            </div>
             {/* Google */}
             <button
-              // onClick={handleGoogleLogin}
-              className="btn bg-white text-black border-[#e5e5e5]"
+              onClick={handleGoogleLogin}
+              className="btn bg-white text-secondary-content mb-2 border-[#e5e5e5]"
             >
               <svg
                 aria-label="Google logo"
@@ -103,10 +138,20 @@ const Login = () => {
               </svg>
               Login with Google
             </button>
-            {/* redirect */}
-            <p>Do not have and account ? Please <Link to='/register' className="underline" state={location}>Register</Link></p>
+            <p className="text-xs sm:text-base">
+              Don't have an account? Please
+              <Link
+                to="/register"
+                state={location.state || "/"}
+                className="underline font-semibold text-base"
+              >
+                {" "}
+                Register
+              </Link>
+            </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

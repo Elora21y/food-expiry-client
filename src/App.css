@@ -1,0 +1,30 @@
+form > input:focus {
+  border: 2px solid #f58f4b;
+  outline: none;
+  box-shadow: 0 0 5px 8px #f7945220;
+}
+form > select:focus {
+  border: 2px solid #f58f4b;
+  outline: none;
+  box-shadow: 0 0 5px 8px #f7945220;
+}
+
+form > input {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #9ca3af62;
+}
+
+form > input::placeholder {
+  color: #9ca3afa8;
+  font-size: 12px;
+}
+form > select {
+  color: rgb(109, 108, 108);
+  font-size: 12px;
+}
+.orange-btn{
+  background-color: #FB9E3A;
+  color: whitesmoke;
+  border: none;
+}
