@@ -89,6 +89,7 @@ const Register = () => {
                   className="input "
                   placeholder="Your Name"
                   name="name"
+                  required
                 />
                 {/* photo */}
                 <label className="label">Photo URL</label>
@@ -140,7 +141,7 @@ const Register = () => {
                 </label>
 
                 <button className="btn orange-btn" type="submit">
-                  Login
+                  Register
                 </button>
               </form>
               {/* social login */}
@@ -183,12 +184,12 @@ const Register = () => {
                 </svg>
                 Login with Google
               </button>
-              <p className="text-xs sm:text-base">
+              <p className="text-xs sm:text-[14px] text-center">
                 Already have an account? Please 
                 <Link
                   to="/login"
                   state={location.state || "/"}
-                  className="hover:underline text-primary font-semibold text-[13px]"
+                  className="hover:underline text-primary font-semibold text-[13px]  sm:text-base"
                 > {"  "}Login
                 </Link>
               </p>
