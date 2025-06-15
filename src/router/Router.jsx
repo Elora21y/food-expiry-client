@@ -50,8 +50,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
-    // {
-    //     path : '/*',
-    //     Component : Error
-    // }
+    {
+        path : '/*',
+        Component : Error
+    }
 ])

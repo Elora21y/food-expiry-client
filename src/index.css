@@ -9,8 +9,9 @@
   default: true;
   --color-primary: #FB9E3A;
   --color-secondary: #454545;
+  --color-secondary-content: #454545;
    --color-accent: #4C585B; 
-   --color-accent-content: #4C585B; 
+   --color-accent-content: #727D73; 
    --color-base-300 : #FEF3E2
 }
 @plugin 'daisyui/theme'{
@@ -18,8 +19,9 @@
   default: true;
  --color-primary: #FB9E3A;
   --color-secondary: #FB9E3A;
+  --color-secondary-content: #EEEFE0;
    --color-accent: #5e686d; 
-   --color-accent-content: #9AA6B2; 
+   --color-accent-content: #EEEFE0; 
     --color-base-300 : #FEF3E2
   }
 
@@ -31,7 +33,7 @@ h2,
 h3,
 h4,
 h5,
-h6{
+h6, .inter{
   font-family: "Inter", sans-serif;
 }
 

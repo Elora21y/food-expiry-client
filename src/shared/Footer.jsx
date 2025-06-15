@@ -86,11 +86,12 @@ const Footer = () => {
             </a>
           </div>
           
-          <p className="mt-3">
-            Copyright © {new Date().getFullYear()} - All right reserved by Fresh Alert
-          </p>
         </div>
       </footer>
+      
+          <p className="pb-5 text-left lg:text-center px-4 text-sm lg:text-base">
+            Copyright © {new Date().getFullYear()} - All right reserved by Fresh Alert
+          </p>
     </div>
   );
 };
