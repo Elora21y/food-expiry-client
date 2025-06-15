@@ -8,11 +8,13 @@ import Fridge from "../pages/Fridge";
 import MyItems from "../pages/MyItems";
 import AuthLayout from "../layout/AuthLayout";
 import Loading from "../shared/Loading";
+import Error from "../pages/Error";
 
 export const router = createBrowserRouter([
     {
         path : '/',
         Component : RootLayout,
+        errorElement : <Error/>,
         hydrateFallbackElement:<Loading/>,
         children : [
             {
@@ -48,4 +50,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    // {
+    //     path : '/*',
+    //     Component : Error
+    // }
 ])

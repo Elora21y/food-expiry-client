@@ -1,15 +1,21 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
+import Loading from "../shared/Loading";
 
 const RootLayout = () => {
+  const navigation = useNavigation()
+  const isNavigation = Boolean(navigation.location)
   return (
     <div className='bg-base-100 min-h-screen'>
       <header  className='sticky backdrop-blur-3xl top-0 z-10'>
         <Navbar />
       </header>
       <main className="min-h-[calc(100vh-285px)] max-w-7xl mx-auto my-5 md:my-8 lg:my-12 px-5 sm:px-8 xl:px-0">
+         {
+                isNavigation && <Loading/>
+            }
         <Outlet></Outlet>
       </main>
       <footer>
