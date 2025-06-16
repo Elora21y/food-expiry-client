@@ -1,7 +1,7 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const UpdateFood = ({food}) => {
+const UpdateFood = ({food,update}) => {
     const {title,foodType,expire_date,quantity,food_photo,description , _id} = food
 
     const handleUpdateFood =(e) =>{
@@ -21,8 +21,12 @@ const UpdateFood = ({food}) => {
       .then((data) => {
         // console.log(data);
         if (data.modifiedCount) {
-            document.getElementById(`update_modal_${_id}`).close();
+            document.getElementById(`my_modal_${_id}`).close();
           toast.success("Updated Food successfully");
+        //   setFood(prev => ({
+        //     ...prev, ...updateFood
+        //   }))
+          update?.({...food,...updateFood})
         }
         else{
           toast.error('Update a field')

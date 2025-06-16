@@ -24,20 +24,27 @@ const MyItemList = ({ AddPromiseFood }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",
                 text: "Your Food has been deleted.",
                 icon: "success",
               });
-              const remainingTip = foods.filter((tip) => tip._id !== id);
-              setFoods(remainingTip);
+              const remainingFoods = foods.filter((food) => food._id !== id);
+              setFoods(remainingFoods);
             }
           });
       }
     });
   };
+  const handleUpdate = (updatedFood) => {
+    const updatedList = foods.map((food) =>
+      food._id === updatedFood._id ? { ...food, ...updatedFood } : food
+    );
+    setFoods(updatedList);
+  };
+
   return (
     <div>
       <div className="overflow-x-auto overflow-y-hidden text-accent-content text-xs lg:text-base">
@@ -80,20 +87,25 @@ const MyItemList = ({ AddPromiseFood }) => {
                   <td>{food.quantity}</td>
                   <th>
                     <div className="flex gap-4 items-center ">
-                      {/* edit */}
+                      {/* edit button*/}
                       <button
                         className="text-secondary btn btn-xs border-primary/30 hover:bg-primary hover:text-white"
                         onClick={() =>
-                          document.getElementById(`my_modal_${food._id}`).showModal()
-                        }>
-                       <RiEdit2Fill size={20} />
+                          document
+                            .getElementById(`my_modal_${food._id}`)
+                            .showModal()
+                        }
+                      >
+                        <RiEdit2Fill size={20} />
                       </button>
                       <dialog id={`my_modal_${food._id}`} className="modal">
                         <div className="modal-box">
-                         <UpdateFood food ={food}/>
-                         <form method="dialog" className="modal-backdrop">
-                          <button className="btn btn-soft btn-error mt-3">close</button>
-                        </form>
+                          <UpdateFood food={food} update={handleUpdate} />
+                          <form method="dialog" className="modal-backdrop">
+                            <button className="btn btn-soft btn-error mt-3">
+                              close
+                            </button>
+                          </form>
                         </div>
                         <form method="dialog" className="modal-backdrop">
                           <button>close</button>
@@ -122,7 +134,7 @@ const MyItemList = ({ AddPromiseFood }) => {
             <h2 className="text-2xl md:text-4xl font-semibold text-red-600">
               No Foods Added
             </h2>
-            <p>Please go back the Add Food page and added a food for alert</p>
+            <p>Please go back the Add Food page and added a food for list</p>
           </div>
         )}
       </div>
