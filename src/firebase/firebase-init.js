@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCjHk5CXOUzOLhiWtDccPBWxJ7fJfqBZ8c",
-  authDomain: "food-expiry-tracker-2b052.firebaseapp.com",
-  projectId: "food-expiry-tracker-2b052",
-  storageBucket: "food-expiry-tracker-2b052.firebasestorage.app",
-  messagingSenderId: "695062081059",
-  appId: "1:695062081059:web:23d2d4c6a6ef1f53618b96"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

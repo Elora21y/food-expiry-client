@@ -22,7 +22,9 @@ const Register = () => {
     );
 
     // console.log(email, password, restFormData);
-
+    
+    if (!restFormData.name) return toast.error("Enter your name");
+    if (!restFormData.photo) return toast.error("Please give us a photo url");
     if (!restFormData.terms) return toast.error("Accept Terms of Condition");
     if (!password) return toast.error("Please Enter a password");
     if (!/(?=.*[a-z])/.test(password))
@@ -89,7 +91,6 @@ const Register = () => {
                   className="input "
                   placeholder="Your Name"
                   name="name"
-                  required
                 />
                 {/* photo */}
                 <label className="label">Photo URL</label>
@@ -185,12 +186,14 @@ const Register = () => {
                 Login with Google
               </button>
               <p className="text-xs sm:text-[14px] text-center">
-                Already have an account? Please 
+                Already have an account? Please
                 <Link
                   to="/auth/login"
                   state={location.state || "/"}
                   className="hover:underline text-primary font-semibold text-[13px]  sm:text-base"
-                > {"  "}Login
+                >
+                  {" "}
+                  {"  "}Login
                 </Link>
               </p>
             </div>

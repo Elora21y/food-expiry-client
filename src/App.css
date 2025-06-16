@@ -7,12 +7,12 @@ ul > li > a:hover {
   color: white;
 }
 
-form > input:focus {
+form >fieldset> input:focus {
   border: 2px solid #f58f4b;
   outline: none;
   box-shadow: 0 0 5px 8px #f7945220;
 }
-form > select:focus {
+form > input:focus {
   border: 2px solid #f58f4b;
   outline: none;
   box-shadow: 0 0 5px 8px #f7945220;
@@ -24,37 +24,20 @@ form > input {
   border: 1px solid #9ca3af62;
 }
 
-form > input::placeholder {
+form  input::placeholder {
   color: #9ca3afa8;
   font-size: 12px;
 }
-form > select {
-  color: rgb(109, 108, 108);
-  font-size: 12px;
-}
+
 .orange-btn {
   background-color: #fb9e3a;
   color: whitesmoke;
   border: none;
 }
+.orange-btn:hover {
+  background-color: #f38a1a;
+}
 
-/* swiper */
-/* .swiper {
-  max-width: 100%;
-  height:100%;
-} */
-
-/* .swiper-slide {
-  text-align: start;
-
-  display: flex;
- 
-} */
-
-/* .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 30px;
-} */
+form label{
+  color: var(--color-secondary-content);
+}

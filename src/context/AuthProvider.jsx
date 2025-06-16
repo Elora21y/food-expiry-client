@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
       unSubscribe()
     }
   }, []);
-  console.log(user);
+  // console.log(user);
   const googleLogin = () => {
     setLoading(true)
    return signInWithPopup(auth, provider)

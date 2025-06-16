@@ -8,7 +8,7 @@ import { MdMarkEmailUnread } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
-  const {user} = use(AuthContext)
+  const { user } = use(AuthContext);
   return (
     <div className=" bg-[#EB5B00] text-white ">
       <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 p-10 text-sm max-w-7xl mx-auto px-5 sm:px-8">
@@ -34,7 +34,7 @@ const Footer = () => {
           </p>
         </aside>
 
-{/* Services */}
+        {/* Services */}
         <nav className="flex flex-col">
           <h2 className="md:text-xl font-bold mb-2">Services</h2>
           <a className="link link-hover" href="/">
@@ -43,32 +43,31 @@ const Footer = () => {
           <a className="link link-hover" href="/fridge">
             Fridge
           </a>
-          {
-            user &&
+          {user && (
             <>
-            <a className="link link-hover" href="/add-food">
-            Add Food
-          </a>
-          <a className="link link-hover" href="/my-items">
-            My Items
-          </a>
+              <a className="link link-hover" href="/add-food">
+                Add Food
+              </a>
+              <a className="link link-hover" href="/my-items">
+                My Items
+              </a>
             </>
-          }
+          )}
         </nav>
         {/* terms */}
-         <div>
-            <h2 className="md:text-xl font-bold mb-2">Terms</h2>
-            <p>
-              <a href="#">Privacy Policy</a>
-            </p>
-            <p>
-              <a href="#">Terms of Service</a>
-            </p>
-            <p>
-              <a href="#">Cookies</a>
-            </p>
-          </div>
-{/* Social */}
+        <div>
+          <h2 className="md:text-xl font-bold mb-2">Terms</h2>
+          <p>
+            <a href="#">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#">Terms of Service</a>
+          </p>
+          <p>
+            <a href="#">Cookies</a>
+          </p>
+        </div>
+        {/* Social */}
         <div>
           <h2 className="md:text-xl font-bold mb-2">Social</h2>
           <div className="flex gap-3 pt-2 social">
@@ -85,13 +84,13 @@ const Footer = () => {
               <IoLogoYoutube size={20} />
             </a>
           </div>
-          
         </div>
       </footer>
-      
-          <p className="pb-5 text-left lg:text-center px-4 text-sm lg:text-base">
-            Copyright © {new Date().getFullYear()} - All right reserved by Fresh Alert
-          </p>
+
+      <p className="pb-5 text-left lg:text-center px-4 text-sm lg:text-base">
+        Copyright © {new Date().getFullYear()} - All right reserved by Fresh
+        Alert
+      </p>
     </div>
   );
 };
