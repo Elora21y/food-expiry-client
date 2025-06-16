@@ -1,14 +1,14 @@
-import React, { use } from "react";
+import React from "react";
 import icon from "../../public/time.png";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import { IoLogoYoutube } from "react-icons/io";
-import { AuthContext } from "../context/AuthContext";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import useAuth from "../hooks/useAuth";
 
 const Footer = () => {
-  const { user } = use(AuthContext);
+  const { user } = useAuth()
   return (
     <div className=" bg-[#EB5B00] text-white ">
       <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 p-10 text-sm max-w-7xl mx-auto px-5 sm:px-8">

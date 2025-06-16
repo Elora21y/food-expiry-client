@@ -1,38 +1,37 @@
-import React from "react";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { useNavigate } from "react-router";
-import useAuth from "../hooks/useAuth";
+import React from 'react';
+import toast from 'react-hot-toast';
 
-const AddFood = () => {
-  const { user } = useAuth()
-  const navigate = useNavigate()
-  const handleAddFood =(e)=>{
-     e.preventDefault();
-    const form = e.target
+const UpdateFood = ({food}) => {
+    const {title,foodType,expire_date,quantity,food_photo,description , _id} = food
+
+    const handleUpdateFood =(e) =>{
+        e.preventDefault()
+        const form = e.target
     const formData = new FormData(form)
-    const newFood = Object.fromEntries(formData.entries())
-
-    newFood.user_email = user.email
-    newFood.added_date = new Date().toISOString().slice(0,10)
-
-    // console.log(newFood)
-    axios.post('http://localhost:2100/foods' , newFood)
-    .then(res => {
-      console.log(res.data)
-      if(res.data.insertedId){
-        toast.success('Added Your Food Successfully')
-        navigate('/my-items')
-      }
+    const updateFood = Object.fromEntries(formData.entries())
+    // console.log(updateFood)
+    fetch(`http://localhost:2100/foods/update/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateFood),
     })
-    .catch(err =>{
-    //   console.log(err)
-      toast.error(err)
-    })
-  }
-  return (
-    <div className="flex flex-col justify-center items-center my-10">
-      <form onSubmit={handleAddFood} className="">
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.modifiedCount) {
+            document.getElementById(`update_modal_${_id}`).close();
+          toast.success("Updated Food successfully");
+        }
+        else{
+          toast.error('Update a field')
+        }
+      });
+    }
+    return (
+         <div className="flex flex-col justify-center items-center ">
+      <form onSubmit={handleUpdateFood} className="">
         <h2 className="mb-3 text-3xl font-bold text-center">
           Add Food
         </h2>
@@ -44,6 +43,7 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Title"
             name="title"
+            defaultValue={title}
           />
           {/* url  */}
           <label className="label">Food Image URL </label>
@@ -52,6 +52,7 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Image"
             name="food_photo"
+            defaultValue={food_photo}
           />
           {/* Quantity  */}
           <label className="label">Food Quantity </label>
@@ -60,56 +61,30 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Quantity"
             name="quantity"
+            defaultValue={quantity}
           />
         </fieldset>
-
         {/*Food type selected */}
-        <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 min-w-72 sm:min-w-96 xl:min-w-md mx-auto">
-          <legend className="fieldset-legend">Select Food Type</legend>
-          <div className="filter ">
-            <input
-              className="btn filter-reset"
-              type="radio"
-              name="foodType"
-              aria-label="All"
-            />
-            <input
-              className="btn"
-              type="radio"
-              name="foodType"
-              aria-label="Dairy"
-              value="Dairy"
-            />
-            <input
-              className="btn"
-              type="radio"
-              name="foodType"
-              aria-label="Meat"
-              value="Meat"
-            />
-            <input
-              className="btn"
-              type="radio"
-              name="foodType"
-              aria-label="Vegetables"
-              value="Vegetables"
-            />
-            <input
-              className="btn"
-              type="radio"
-              name="foodType"
-              aria-label="Snacks"
-              value="Snacks"
-            />
-          </div>
-        </fieldset>
+        <select
+            className="w-full select select-bordered  min-w-72 sm:min-w-96 xl:min-w-md mx-auto mt-4 border-primary"
+            name="foodType"
+            defaultValue={foodType}
+          >
+            <option disabled value="">
+             Select Food Type
+            </option>
+            <option>Dairy</option>
+            <option>Meat</option>
+            <option>Vegetables</option>
+            <option>Snacks</option>
+          </select>
 
         {/* Expiry Date*/}
         <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 max-w-lg mx-auto">
           <legend className="fieldset-legend ">Expired Date</legend>
           <label className="input border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] placeholder:text-gray-300 placeholder:text-xs w-full">
             <span className="label ">Expiry Date</span>
-            <input type="date" name="expire_date" />
+            <input type="date" name="expire_date" defaultValue={expire_date}/>
           </label>
         </fieldset>
 
@@ -120,16 +95,17 @@ const AddFood = () => {
             className="textarea w-full border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] placeholder:text-gray-300 placeholder:text-xs"
             placeholder="Food Description"
             name="description"
+            defaultValue={description}
           ></textarea>
         </fieldset>
 
         {/* button */}
         <button type="submit" className="btn hover:text-white hover:bg-primary text-primary border border-primary btn-soft btn-block mt-4 bg-transparent">
-          Add Food
+          Update Food
         </button>
       </form>
     </div>
-  );
+    );
 };
 
-export default AddFood;
+export default UpdateFood;

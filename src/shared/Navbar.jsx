@@ -1,13 +1,13 @@
-import React, { use } from "react";
+import React from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { Link, NavLink } from "react-router";
-import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import icon from "../../public/time.png";
 import { Tooltip  } from 'react-tooltip'
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut, handleToggle, theme } = use(AuthContext);
+  const { user, logOut, handleToggle, theme } = useAuth()
   const links = (
     <>
       <li>

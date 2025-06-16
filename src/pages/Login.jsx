@@ -1,13 +1,13 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import lottieLogin from "../../public/lottie/login.json";
 import Lottie from "lottie-react";
 import { Link, useLocation, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { AuthContext } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { loginUser, googleLogin } = use(AuthContext);
+  const { loginUser, googleLogin } = useAuth()
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();

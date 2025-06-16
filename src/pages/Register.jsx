@@ -1,14 +1,14 @@
-import React, { use, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import lottieRegister from "../../public/lottie/register.json";
 import Lottie from "lottie-react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
-  const { createUser, googleLogin } = use(AuthContext);
+  const { createUser, googleLogin } = useAuth()
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();

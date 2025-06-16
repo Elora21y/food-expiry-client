@@ -17,6 +17,11 @@ form > input:focus {
   outline: none;
   box-shadow: 0 0 5px 8px #f7945220;
 }
+form > select:focus {
+  border: 2px solid #f58f4b;
+  outline: none;
+  box-shadow: 0 0 5px 8px #f7945220;
+}
 
 form > input {
   width: 100%;

@@ -9,6 +9,7 @@ import MyItems from "../pages/MyItems";
 import AuthLayout from "../layout/AuthLayout";
 import Loading from "../shared/Loading";
 import Error from "../pages/Error";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,11 +28,11 @@ export const router = createBrowserRouter([
             },
             {
                 path : '/add-food',
-                element: <AddFood></AddFood>
+                element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
             },
             {
                 path : '/my-items',
-                element : <MyItems></MyItems>
+                element : <PrivateRoute> <MyItems></MyItems></PrivateRoute>
             }
         ]
     },

@@ -1,0 +1,133 @@
+import React, { use, useState } from "react";
+import { RiDeleteBin6Line, RiEdit2Fill } from "react-icons/ri";
+import Swal from "sweetalert2";
+import UpdateFood from "../pages/UpdateFood";
+
+const MyItemList = ({ AddPromiseFood }) => {
+  const data = use(AddPromiseFood);
+  const [foods, setFoods] = useState(data);
+  // console.log(foods)
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:2100/foods/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Food has been deleted.",
+                icon: "success",
+              });
+              const remainingTip = foods.filter((tip) => tip._id !== id);
+              setFoods(remainingTip);
+            }
+          });
+      }
+    });
+  };
+  return (
+    <div>
+      <div className="overflow-x-auto overflow-y-hidden text-accent-content text-xs lg:text-base">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary-content text-center mb-5 lg:mb-7">
+          My Tip Collection
+        </h2>
+        {foods.length !== 0 ? (
+          <table className="table table-zebra">
+            {/* head */}
+            <thead className=" bg-primary/30 text-orange-400">
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Expire Date</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {foods.map((food, index) => (
+                <tr key={food._id}>
+                  <th>
+                    <div className="flex items-center gap-3">
+                      {index + 1}
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img src={food.food_photo} alt="Food" />
+                        </div>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    <div>
+                      <div className="font-bold">{food.title}</div>
+                    </div>
+                  </td>
+                  <td>{food.foodType}</td>
+                  <td>{food.expire_date}</td>
+                  <td>{food.quantity}</td>
+                  <th>
+                    <div className="flex gap-4 items-center ">
+                      {/* edit */}
+                      <button
+                        className="text-secondary btn btn-xs border-primary/30 hover:bg-primary hover:text-white"
+                        onClick={() =>
+                          document.getElementById(`my_modal_${food._id}`).showModal()
+                        }>
+                       <RiEdit2Fill size={20} />
+                      </button>
+                      <dialog id={`my_modal_${food._id}`} className="modal">
+                        <div className="modal-box">
+                         <UpdateFood food ={food}/>
+                         <form method="dialog" className="modal-backdrop">
+                          <button className="btn btn-soft btn-error mt-3">close</button>
+                        </form>
+                        </div>
+                        <form method="dialog" className="modal-backdrop">
+                          <button>close</button>
+                        </form>
+                      </dialog>
+                      {/* <button className="text-secondary btn btn-xs border-primary/30 hover:bg-primary hover:text-white">
+                        <RiEdit2Fill size={20} />
+                      </button> */}
+
+                      {/* delete */}
+                      <button
+                        onClick={() => handleDelete(food._id)}
+                        className="text-red-600 btn btn-xs border-primary/30 hover:bg-red-500 hover:text-white "
+                      >
+                        <RiDeleteBin6Line size={15} />
+                      </button>
+                    </div>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="bg-base-200 flex flex-col border border-primary/30 items-center justify-center p-6 md:p-10 rounded-xl min-h-[calc(100vh-285px)] gap-2 text-center mx-auto">
+            <img src="/cross.svg" alt="" className="w-24 md:w-40" />
+            <h2 className="text-2xl md:text-4xl font-semibold text-red-600">
+              No Foods Added
+            </h2>
+            <p>Please go back the Add Food page and added a food for alert</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default MyItemList;
