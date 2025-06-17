@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FoodDetails = () => {
+const Expired = () => {
     return (
         <div>
-            Details
+            
         </div>
     );
 };
 
-export default FoodDetails;
+export default Expired;

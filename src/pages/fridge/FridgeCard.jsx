@@ -16,13 +16,13 @@ const FridgeCard = ({ food }) => {
     _id,
   } = food;
   return (
-    <div className="rounded-2xl shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 bg-base-100">
+    <div className="rounded-2xl font-semibold shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 bg-base-100">
       <img
         src={food_photo}
         alt={title}
         className="h-48 w-full object-cover rounded-md mb-4"
       />
-      {/* <div className="flex justify-between items-start gap-1"> */}
+     
         <div>
           <h3 className="text-xl lg:text-2xl font-semibold text-secondary-content ">
             {title}
@@ -45,7 +45,6 @@ const FridgeCard = ({ food }) => {
           </span>
         </div>
         </div>
-      {/* </div> */}
 
       <Link
         to={`/food-details/${_id}`}
