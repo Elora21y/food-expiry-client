@@ -29,7 +29,7 @@ The purpose of this project is to:
 
 - **Frontend:** React, Vite, TailwindCSS, DaisyUI, React Router
 - **Backend:** Express.js, MongoDB
-- **Authentication:** Firebase Auth, JWT
+- **Authentication:** Firebase Auth
 - **Deployment:** Firebase Hosting
 
 ##  NPM Packages Used
@@ -41,7 +41,7 @@ The purpose of this project is to:
 - `react-hot-toast` – for toast notifications  
 - `date-fns` – for date manipulation  
 - `dotenv` – for environment variable handling  
-- `cors`, `express`, `mongodb`, `jsonwebtoken` – backend packages
+- `cors`, `express`, `mongodb` – backend packages
 
 
 

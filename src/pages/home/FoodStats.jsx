@@ -35,8 +35,8 @@ const FoodStats = () => {
     const upcoming = res.data.filter(food =>
       food.expire_date >= todayStr && food.expire_date <= next5Days
     );
-    console.log("Today:", todayStr);
-console.log("Future (5 days later):", next5Days);
+//     console.log("Today:", todayStr);
+// console.log("Future (5 days later):", next5Days);
 
     
     setNearlyExpiryCount(upcoming.length);

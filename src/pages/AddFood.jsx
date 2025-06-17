@@ -19,7 +19,7 @@ const AddFood = () => {
     // console.log(newFood)
     axios.post('https://food-expiry-tracker-server-three.vercel.app/foods' , newFood)
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       if(res.data.insertedId){
         toast.success('Added Your Food Successfully')
         navigate('/my-items')

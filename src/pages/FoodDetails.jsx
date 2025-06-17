@@ -40,7 +40,7 @@ const FoodDetails = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(note),
+      body: JSON.stringify(note)
     })
       .then((res) => res.json())
       .then((data) => {
