@@ -5,7 +5,7 @@ import { FcExpired } from "react-icons/fc";
 
 const FridgeCard = ({ food }) => {
     const [isHover , setHover] = useState(false)
-  console.log(food);
+  // console.log(food);
   const {
     title,
     foodType,
