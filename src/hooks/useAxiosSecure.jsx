@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import useAuth from './useAuth';
 const axiosInstance = axios.create({
-    baseURL : 'http://localhost:2100'
+    baseURL : 'https://food-expiry-tracker-server-three.vercel.app'
 })
 
 const useAxiosSecure = () => {
