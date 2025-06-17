@@ -101,6 +101,13 @@ const AddFood = () => {
               aria-label="Snacks"
               value="Snacks"
             />
+            <input
+              className="btn"
+              type="radio"
+              name="foodType"
+              aria-label="Fruits"
+              value="Fruits"
+            />
           </div>
         </fieldset>
 

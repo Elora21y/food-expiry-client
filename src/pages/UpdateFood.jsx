@@ -81,6 +81,7 @@ const UpdateFood = ({food,update}) => {
             <option>Meat</option>
             <option>Vegetables</option>
             <option>Snacks</option>
+            <option>Fruits</option>
           </select>
 
         {/* Expiry Date*/}

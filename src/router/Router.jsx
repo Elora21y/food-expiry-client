@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             {
                 path : '/food-details/:id',
                 Component : FoodDetails,
-                // loader : ()=>fetch('http://localhost:2100/foods/')
+                loader : ({params})=>fetch(`http://localhost:2100/foods/${params.id}`)
             },
             {
                 path : '/add-food',
