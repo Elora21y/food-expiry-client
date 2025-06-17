@@ -48,8 +48,8 @@ const MyItemList = ({ AddPromiseFood }) => {
   return (
     <div>
       <div className="overflow-x-auto overflow-y-hidden text-accent-content text-xs lg:text-base">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary-content text-center mb-5 lg:mb-7">
-          My Tip Collection
+        <h2 className="text-3xl lg:text-4xl font-bold text-secondary-content text-center mb-5 lg:mb-7">
+          My Food List
         </h2>
         {foods.length !== 0 ? (
           <table className="table table-zebra">

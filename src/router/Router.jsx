@@ -4,12 +4,13 @@ import RootLayout from "../layout/RootLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddFood from "../pages/AddFood";
-import Fridge from "../pages/Fridge";
+import Fridge from "../pages/fridge/Fridge";
 import MyItems from "../pages/MyItems";
 import AuthLayout from "../layout/AuthLayout";
 import Loading from "../shared/Loading";
 import Error from "../pages/Error";
 import PrivateRoute from "./PrivateRoute";
+import FoodDetails from "../pages/FoodDetails";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,13 @@ export const router = createBrowserRouter([
             },
             {
                 path : '/fridge',
-                Component : Fridge
+                Component : Fridge,
+                loader : ()=>fetch('http://localhost:2100/foods')
+            },
+            {
+                path : '/food-details/:id',
+                Component : FoodDetails,
+                // loader : ()=>fetch('http://localhost:2100/foods/')
             },
             {
                 path : '/add-food',
