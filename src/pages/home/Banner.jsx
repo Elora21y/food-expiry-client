@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -40,7 +41,11 @@ const Banner = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-5 text-accent-content mb-15">
       {/* main content */}
-      <div className="max-w-2xl text-center lg:text-left space-y-3">
+      <motion.div className="max-w-2xl text-center lg:text-left space-y-3"
+      initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{once : true}}>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-secondary-content mb-4">
           {" "}
           Keep Your Food <span className="text-primary inter">Fresh</span>{" "}
@@ -54,7 +59,7 @@ const Banner = () => {
         <button className="btn btn-xs sm:btn-md orange-btn">
           Read More
         </button>
-      </div>
+      </motion.div>
       {/* slider */}
       <Swiper
         slidesPerView={1.5}

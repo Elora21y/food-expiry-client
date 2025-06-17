@@ -52,7 +52,7 @@ const MyItemList = ({ AddPromiseFood }) => {
           My Food List
         </h2>
         {foods.length !== 0 ? (
-          <table className="table table-zebra">
+          <table className="table table-zebra ">
             {/* head */}
             <thead className=" bg-primary/30 text-orange-400">
               <tr>

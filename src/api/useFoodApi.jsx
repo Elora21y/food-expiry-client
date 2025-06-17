@@ -1,13 +1,17 @@
-import axios from 'axios';
-import React from 'react';
+
+import React from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const useFoodApi = () => {
-    const AddPromiseFood = email =>{
-return axios.get(`http://localhost:2100/foods?email=${email}`).then(res => res.data)
-    }
-    return{ 
-        AddPromiseFood
-    }
+  const axiosSecure = useAxiosSecure();
+  const AddPromiseFood = (email) => {
+    return axiosSecure
+      .get(`/foods/my-list?email=${email}`)
+      .then((res) => res.data);
+  };
+  return {
+    AddPromiseFood,
+  };
 };
 
 export default useFoodApi;

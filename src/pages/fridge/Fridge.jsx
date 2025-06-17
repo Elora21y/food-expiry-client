@@ -4,6 +4,8 @@ import FridgeCard from './FridgeCard';
 import Search from '../../shared/Search';
 import { IoIosArrowDown } from "react-icons/io";
 
+import { motion } from "framer-motion";
+
 const Fridge = () => {
     const data = useLoaderData()
       const [foods, setFoods] = useState(data);
@@ -33,9 +35,6 @@ const Fridge = () => {
           <h2 className="text-3xl lg:text-5xl font-bold text-secondary-content">
               My Fridge Inventory
           </h2>
-          <p className=" mt-2 max-w-2xl mx-auto text-base ">
-         Browse through all your added food items at a glance. Keep track of quantities, categories, and expiry statuses so you never let food go to waste.
-          </p>
         </div>
             <div className=" flex justify-end items-start">
                 <div></div>
@@ -78,12 +77,25 @@ const Fridge = () => {
         </div>
       </div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
+{
+  foods?.length !== 0 ?
+  <motion.div initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }} 
+  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
             {
-                foods.map(food => <FridgeCard key={food._id} food={food}/>)
+              foods?.map(food => <FridgeCard key={food._id} food={food}/>)
             }
-            </div>
+            </motion.div>
+            :
+            <div className="bg-base-200 flex flex-col items-center justify-center p-6 md:p-10 rounded-xl gap-2 text-center mx-auto">
+            <h2 className="text-2xl md:text-4xl font-semibold text-red-600">
+              No Foods Founded
+            </h2>
+            <p>Please search another thing with food title or category</p>
+          </div>
+            }
         </div>
     );
 };

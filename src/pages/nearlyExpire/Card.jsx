@@ -14,7 +14,8 @@ const Card = ({ food }) => {
     _id,
   } = food;
   return (
-    <div className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 font-semibold">
+    <div 
+    className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 font-semibold">
       <img
         src={food_photo}
         alt={title}

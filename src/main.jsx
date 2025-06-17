@@ -6,6 +6,8 @@ import { RouterProvider } from 'react-router'
 import { router } from './router/Router.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 
+import { motion } from "framer-motion";
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
