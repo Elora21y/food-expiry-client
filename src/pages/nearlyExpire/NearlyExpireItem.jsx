@@ -7,7 +7,7 @@ const NearlyExpireItem = () => {
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:2100/foods/nearly-expiry")
+      .get("https://food-expiry-tracker-server-three.vercel.app/foods/nearly-expiry")
       .then((res) => setFoods(res.data));
   }, []);
   // console.log(foods);

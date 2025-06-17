@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { SlNotebook } from "react-icons/sl";
@@ -7,6 +7,7 @@ import { FaStore } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import CountDown from "../shared/CountDown";
+import { motion } from "framer-motion";
 
 const FoodDetails = () => {
   const { user } = useAuth();
@@ -20,19 +21,21 @@ const FoodDetails = () => {
     food_photo,
     description,
     user_email,
-    text,
-    postedDate,
+    text : initialText,
+    postedDate : initialPostedDate,
     _id,
   } = useLoaderData();
+  const [note, setNote] = useState(initialText || "");
+  const [noteDate, setNoteDate] = useState(initialPostedDate || "");
 
   const handleAddNote = (e, id) => {
     e.preventDefault();
-    const text = e.target.note.value;
+    const text = e.target.note.value.trim();
     const postedDate = new Date().toISOString().split("T")[0];
     const note = { text, postedDate };
-    if (!note) return toast.error("First add something ");
+    if (!text ) return toast.error("First add something ");
     // console.log(note);
-    fetch(`http://localhost:2100/foods/${id}`, {
+    fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -44,15 +47,22 @@ const FoodDetails = () => {
         // console.log(data)
         if (data.modifiedCount) {
           toast.success("Note Added");
+          setNote(text);
+          setNoteDate(postedDate);
+          e.target.reset()
         } else {
           toast.error("something wrong, try later");
         }
       });
   };
+  
 
   return (
-    <div>
-      <div className="max-w-2xl mx-auto px-3 md:px-5 font-semibold text-accent-content ">
+      <motion.div initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      className="max-w-2xl mx-auto px-3 md:px-5 font-semibold text-accent-content ">
         <span onClick={() => navigate(-1)}>
           <FaCircleArrowLeft size={25} className="text-primary mb-5" />
         </span>
@@ -93,16 +103,16 @@ const FoodDetails = () => {
             {/* food Description */}
             <p className="first-letter:text-lg">{description}</p>
           </div>
-          {text && (
+          {note && (
             <div className="mt-5 space-y-2">
               <h4 className="text-primary text-base mb-2 flex items-center gap-1">
                 <SlNotebook size={20} />
                 All Notes :
               </h4>
               <div className="border border-primary/20 p-2 rounded bg-primary/5">
-                <p className="text-sm">{text}</p>
+                <p className="text-sm">{note}</p>
                 <p className="text-xs text-gray-500 text-right">
-                   Posted on {postedDate}
+                   Posted on {noteDate}
                 </p>
               </div>
             </div>
@@ -133,8 +143,7 @@ const FoodDetails = () => {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </motion.div>
   );
 };
 

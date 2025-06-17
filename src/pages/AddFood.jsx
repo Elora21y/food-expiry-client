@@ -17,7 +17,7 @@ const AddFood = () => {
     newFood.added_date = new Date().toISOString().slice(0,10)
 
     // console.log(newFood)
-    axios.post('http://localhost:2100/foods' , newFood)
+    axios.post('https://food-expiry-tracker-server-three.vercel.app/foods' , newFood)
     .then(res => {
       console.log(res.data)
       if(res.data.insertedId){
@@ -44,6 +44,7 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Title"
             name="title"
+            required
           />
           {/* url  */}
           <label className="label">Food Image URL </label>
@@ -52,6 +53,7 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Image"
             name="food_photo"
+            required
           />
           {/* Quantity  */}
           <label className="label">Food Quantity </label>
@@ -60,6 +62,7 @@ const AddFood = () => {
             className="input w-full"
             placeholder="Food Quantity"
             name="quantity"
+            required
           />
         </fieldset>
 
@@ -116,7 +119,7 @@ const AddFood = () => {
           <legend className="fieldset-legend ">Expired Date</legend>
           <label className="input border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] placeholder:text-gray-300 placeholder:text-xs w-full">
             <span className="label ">Expiry Date</span>
-            <input type="date" name="expire_date" />
+            <input type="date" name="expire_date" required/>
           </label>
         </fieldset>
 
@@ -127,6 +130,7 @@ const AddFood = () => {
             className="textarea w-full border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] placeholder:text-gray-300 placeholder:text-xs"
             placeholder="Food Description"
             name="description"
+            
           ></textarea>
         </fieldset>
 

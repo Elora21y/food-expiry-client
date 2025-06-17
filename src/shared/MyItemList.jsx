@@ -19,7 +19,7 @@ const MyItemList = ({ AddPromiseFood }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:2100/foods/${id}`, {
+        fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

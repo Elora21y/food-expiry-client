@@ -1,12 +1,47 @@
-# React + Vite
+#  FreshAlert
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FreshAlert is a food sharing and management platform designed to reduce food waste by helping users post, find, and claim fresh and nearly expired food items.
 
-Currently, two official plugins are available:
+## 🌐 Live URL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [https://freshalert.web.app](https://freshalert.web.app)
 
-## Expanding the ESLint configuration
+## 🎯 Purpose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The purpose of this project is to:
+- Reduce food waste in the community.
+- Help people access fresh food for free or low cost.
+- Track and notify about food expiry for better food management.
+
+##  Key Features
+
+-  Add & Manage Food Listings (with expiry tracking)
+-  Highlights **Nearly Expired** & **Expired** food items
+-  Search & Filter by Category or Name
+-  Countdown to food expiration
+-  Detailed Food Info Page with Notes
+-  JWT Authentication with Firebase
+-  Light/Dark Theme Toggle
+-  Fully Responsive Design
+-  CountUp statistics for food items
+
+##  Technologies Used
+
+- **Frontend:** React, Vite, TailwindCSS, DaisyUI, React Router
+- **Backend:** Express.js, MongoDB
+- **Authentication:** Firebase Auth, JWT
+- **Deployment:** Firebase Hosting
+
+##  NPM Packages Used
+
+- `axios` – for HTTP requests  
+- `react-router-dom` – for client-side routing  
+- `framer-motion` – for animations  
+- `react-countup` – for animated counting  
+- `react-hot-toast` – for toast notifications  
+- `date-fns` – for date manipulation  
+- `dotenv` – for environment variable handling  
+- `cors`, `express`, `mongodb`, `jsonwebtoken` – backend packages
+
+
+

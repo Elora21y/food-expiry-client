@@ -15,7 +15,7 @@ const FoodStats = () => {
  
   useEffect(() => {
     // Expired foods
-    axios.get("http://localhost:2100/foods")
+    axios.get("https://food-expiry-tracker-server-three.vercel.app/foods")
       .then(res => {
         const today = new Date().toISOString().slice(0, 10);
         const expired = res.data.filter(food => food.expire_date < today);
@@ -23,7 +23,7 @@ const FoodStats = () => {
       });
 
     // Nearly Expiry
-   axios.get("http://localhost:2100/foods")
+   axios.get("https://food-expiry-tracker-server-three.vercel.app/foods")
   .then(res => {
     const today = new Date();
     const todayStr = today.toISOString().slice(0, 10);

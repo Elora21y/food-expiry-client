@@ -10,7 +10,7 @@ const UpdateFood = ({food,update}) => {
     const formData = new FormData(form)
     const updateFood = Object.fromEntries(formData.entries())
     // console.log(updateFood)
-    fetch(`http://localhost:2100/foods/update/${_id}`, {
+    fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/update/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
