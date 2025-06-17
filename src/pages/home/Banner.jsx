@@ -40,7 +40,7 @@ const Banner = () => {
   return (
     <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-5 text-accent-content mb-15">
       {/* main content */}
-      <div className="max-w-2xl text-center lg:text-left">
+      <div className="max-w-2xl text-center lg:text-left space-y-3">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-secondary-content mb-4">
           {" "}
           Keep Your Food <span className="text-primary inter">Fresh</span>{" "}
@@ -51,6 +51,9 @@ const Banner = () => {
           expiry, and reduce waste. Organize your kitchen smarter with our
           simple and powerful food tracking system.
         </p>
+        <button className="btn btn-xs sm:btn-md orange-btn">
+          Read More
+        </button>
       </div>
       {/* slider */}
       <Swiper
