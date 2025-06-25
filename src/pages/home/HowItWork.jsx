@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const HowItWork = () => {
   return (
-    <div className="py-16 md:px-24 lg:px-8 lg:py-20 text-accent-content">
+    <div className="py-16 md:px-24 lg:px-8 lg:py-20 text-accent-content bg-base-100">
       {/* Section Title */}
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
@@ -32,7 +32,7 @@ const HowItWork = () => {
 
         {/* Step 1 */}
         <div className="text-center border border-yellow-200 hover:border-primary  shadow-yellow-300 rounded-xl p-5 hover:scale-105 duration-500">
-          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-secondary-content mx-auto">
+          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-white mx-auto">
             1
           </div>
           <h6 className="mb-2 font-semibold text-2xl ">
@@ -44,7 +44,7 @@ const HowItWork = () => {
         </div>
         {/* Step 2 */}
         <div className="text-center border border-yellow-200 hover:border-primary  shadow-yellow-300 rounded-xl p-5 hover:scale-105 duration-500">
-          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-secondary-content mx-auto">
+          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-white mx-auto">
             2
           </div>
           <h6 className="mb-2 font-semibold text-2xl ">
@@ -56,7 +56,7 @@ const HowItWork = () => {
         </div>
         {/* Step 3 */}
         <div className="text-center border border-yellow-200 hover:border-primary  shadow-yellow-300 rounded-xl p-5 hover:scale-105 duration-500">
-          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-secondary-content mx-auto">
+          <div className="flex items-center justify-center w-16 h-16 mb-4 text-4xl font-bold rounded-full bg-primary text-white mx-auto">
             3
           </div>
           <h6 className="mb-2 font-semibold text-2xl ">

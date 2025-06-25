@@ -8,6 +8,7 @@ const Expired = () => {
     const data = useLoaderData()
     const [foods , setFoods] = useState(data)
     useEffect(()=>{
+      // data.filter(food =>   console.log(food.expire_date , food.expire_date< new Date().toISOString().slice(0,10)))
       setFoods(data.filter(food =>  food.expire_date < new Date().toISOString().slice(0,10)))
     },[data])
     return (

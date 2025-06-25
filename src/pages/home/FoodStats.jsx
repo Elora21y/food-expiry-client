@@ -39,7 +39,7 @@ const FoodStats = () => {
 // console.log("Future (5 days later):", next5Days);
 
     
-    setNearlyExpiryCount(upcoming.length);
+    setNearlyExpiryCount(upcoming?.length);
   });
 
   }, []);
@@ -56,7 +56,7 @@ const FoodStats = () => {
       >
         <h3 className="text-xl text-secondary-content font-semibold mb-2">Expired Foods</h3>
         <p className="text-4xl font-bold text-error">
-          {inView && <CountUp end={expiredCount} duration={5} />}
+          {inView && <CountUp end={expiredCount} duration={3} />}
         </p>
       </motion.div>
 
@@ -69,7 +69,7 @@ const FoodStats = () => {
       >
         <h3 className="text-xl text-secondary-content font-semibold mb-2">Nearly Expiry Foods</h3>
         <p className="text-4xl font-bold text-warning">
-           {inView && <CountUp end={nearlyExpiryCount} duration={5} />}
+           {inView && <CountUp end={nearlyExpiryCount} duration={3} />}
         </p>
       </motion.div>
     </div>

@@ -44,5 +44,5 @@ form  input::placeholder {
 }
 
 form label{
-  color: var(--color-secondary-content);
+  color: var(--color-accent);
 }

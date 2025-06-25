@@ -9,31 +9,35 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay, Pagination } from "swiper/modules";
+import banner1 from '/banner/timer.jpg'
+import banner2 from '/banner/vegetable.jpg'
+import banner3 from '/banner/fridge.jpg'
+import banner4 from '/banner/list.jpg'
 
 const datas = [
   {
     title: "Never Miss an Expiry Date",
     description:
       "Add food items with expiry dates and get timely alerts before they go bad. Stay in control of your kitchen!",
-    url: "../../../public/banner/timer.jpg",
+    url: banner1,
   },
   {
     title: "Save Food, Save Money",
     description:
       "Avoid unnecessary food waste by keeping track of what you have and when it expires. A little tracking goes a long way.",
-    url: "../../../public/banner/vegetable.jpg",
+    url: banner2,
   },
   {
     title: "Smart. Simple. Efficient.",
     description:
       "FreshAlert helps you manage your fridge with ease. From adding items to getting expiry notifications — all in one place.",
-    url: "../../../public/banner/fridge.jpg",
+    url: banner3,
   },
   {
     title: "Let the food list be digital now!",
     description:
       "You can easily track all types of food, including your dates, raisins, dried fruits.And the days start journey to healthy life",
-    url: "../../../public/banner/list.jpg",
+    url: banner4,
   },
 ];
 
@@ -56,7 +60,7 @@ const Banner = () => {
           expiry, and reduce waste. Organize your kitchen smarter with our
           simple and powerful food tracking system.
         </p>
-        <button className="btn btn-xs sm:btn-md orange-btn">
+        <button className="btn bg-linear-to-r from-primary to-orange-500 border-0 text-white hover:scale-101 transition-all duration-300">
           Read More
         </button>
       </motion.div>

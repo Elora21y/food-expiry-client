@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 const CountDown = ({ expireDate }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, sec: 0});
   useEffect(() => {
-    const expire = new Date(expireDate).getTime();
+    // console.log( new Date(expireDate ).getTime() >=  new Date().getTime())
+    const expire = new Date(expireDate + "T23:59:59").getTime();
     const interval = setInterval(() => {
       const today = new Date().getTime();
       const diff = expire - today;
