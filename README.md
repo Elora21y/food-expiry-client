@@ -4,7 +4,7 @@ FreshAlert is a food sharing and management platform designed to reduce food was
 
 ## 🌐 Live URL
 
-🔗 [https://food-expiry-tracker-2b052.web.app/](https://food-expiry-tracker-2b052.web.app/)
+🔗 [Visit Fresh Alert](https://food-expiry-tracker-2b052.web.app/)
 
 ## 🎯 Purpose
 
