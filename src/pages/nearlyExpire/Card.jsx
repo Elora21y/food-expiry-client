@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { FcExpired } from "react-icons/fc";
 import { HiArrowSmRight, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
 
 const Card = ({ food }) => {
-    const [isHover , setHover] = useState(false)
-  const {
-    title,
-    foodType,
-    expire_date,
-    quantity,
-    food_photo,
-    _id,
-  } = food;
+  const [isHover, setHover] = useState(false);
+  const { title, foodType, expire_date, quantity, food_photo, _id } = food;
   return (
-    <div 
-    className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 font-semibold">
+    <motion.div
+      initial={{ opacity: 0.4, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true, amount: 0.5 }}
+      className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 font-semibold"
+    >
       <img
         src={food_photo}
         alt={title}
@@ -55,7 +54,7 @@ const Card = ({ food }) => {
           <HiArrowSmRight size={20} />
         )}
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

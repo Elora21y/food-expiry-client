@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +13,7 @@ import banner1 from '/banner/timer.jpg'
 import banner2 from '/banner/vegetable.jpg'
 import banner3 from '/banner/fridge.jpg'
 import banner4 from '/banner/list.jpg'
+import GrediantButton from "../../shared/GrediantButton";
 
 const datas = [
   {
@@ -30,7 +31,7 @@ const datas = [
   {
     title: "Smart. Simple. Efficient.",
     description:
-      "FreshAlert helps you manage your fridge with ease. From adding items to getting expiry notifications — all in one place.",
+      "Fresh Alert helps you manage your fridge with ease. From adding items to getting expiry notifications — all in one place.",
     url: banner3,
   },
   {
@@ -42,8 +43,9 @@ const datas = [
 ];
 
 const Banner = () => {
+   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-5 text-accent-content mb-15">
+    <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-5 text-accent-content mb-15 px-4">
       {/* main content */}
       <motion.div className="max-w-2xl text-center lg:text-left space-y-3"
       initial={{ y: 30, opacity: 0 }}
@@ -54,19 +56,27 @@ const Banner = () => {
           {" "}
           Keep Your Food <span className="text-primary inter">Fresh</span>{" "}
           Always!
+            {/* animate={{
+          scale: [1, 1.09, 1], 
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }
+        }} */}
         </h1>
         <p className="text-sm sm:text-lg">
-          FreshAlert helps you track your food items, get notified before
+          Fresh Alert helps you track your food items, get notified before
           expiry, and reduce waste. Organize your kitchen smarter with our
           simple and powerful food tracking system.
         </p>
-        <button className="btn bg-linear-to-r from-primary to-orange-500 border-0 text-white hover:scale-101 transition-all duration-300">
-          Read More
-        </button>
+        <GrediantButton text={'Read More'} path={'/about'}/>
       </motion.div>
       {/* slider */}
       <Swiper
         slidesPerView={1.5}
+        
         spaceBetween={20}
         centeredSlides={true}
         pagination={{
@@ -75,14 +85,18 @@ const Banner = () => {
         modules={[Pagination, Autoplay]}
         // className="mySwiper"
         autoplay={{ delay: 5000 }}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         className="w-full max-w-md md:max-w-lg lg:max-w-xl h-54 sm:h-80 lg:h-76 xl:h-88"
       >
-        {datas.map((data) => (
+        {datas.map((data , index) => (
           <SwiperSlide>
-            <div
-              className="text-white w-full max-w-md md:max-w-lg lg:max-w-xl h-54 sm:h-80 lg:h-76 xl:h-88 rounded-2xl overflow-hidden border-2 border-primary"
+            <div 
+            key={index}
+              className={`text-white w-full max-w-md md:max-w-lg lg:max-w-xl h-54 sm:h-80 lg:h-76 xl:h-88 rounded-2xl overflow-hidden border-2 border-primary ${
+                index === activeIndex ? "opacity-100" : "opacity-55 "
+              }`}
               style={{
-                backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.35)) , url(${data.url})`,
+                backgroundImage: `linear-gradient(to bottom right, rgba(0,0,0,0.5), rgba(0,0,0,0.28)) , url(${data.url})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}

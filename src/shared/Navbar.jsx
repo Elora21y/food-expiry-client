@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import icon from "../../public/time.png";
 import { Tooltip  } from 'react-tooltip'
 import useAuth from "../hooks/useAuth";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const { user, logOut, handleToggle, theme } = useAuth()
@@ -26,6 +27,7 @@ const Navbar = () => {
           </li>
         </>
       )}
+      <li><NavLink to='/about'>About</NavLink></li>
     </>
   );
   const handleLogout = () => {
@@ -34,7 +36,7 @@ const Navbar = () => {
       .catch((error) => toast.error(error));
   };
   return (
-    <div className=" bg-base-200 shadow  border-b border-primary/30">
+    <div className=" bg-base-200/60 shadow  border-b border-primary/30">
       <div className=" max-w-7xl mx-auto px-2 sm:px-8 xl:px-0 navbar p-0">
         <div className="navbar-start">
           <img src={icon} alt="" className="w-6 sm:w-10" />
@@ -83,7 +85,7 @@ const Navbar = () => {
             <>
               <Link
                 to="/auth/login"
-                className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-white "
+                className="btn btn-xs sm:btn-md hover:text-white hover:bg-primary text-primary border border-primary bg-transparent "
               >
                 Login
               </Link>

@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import { Link } from 'react-router';
 import Navbar from '../shared/Navbar';
 import Footer from '../shared/Footer';
+import GrediantButton from '../shared/GrediantButton';
 
 const Error = () => {
     return (
@@ -13,7 +14,8 @@ const Error = () => {
             <Lottie animationData={notFound} loop={true} style={{
                 maxWidth : '520px'
             }}/>
-             <Link to='/' className='btn bg-linear-to-r from-primary to-orange-500 border-0 text-white hover:scale-101 transition-all duration-300'>Go Back Home</Link>
+             {/* <Link to='/' className='btn bg-linear-to-r from-primary to-orange-500 border-0 text-white hover:scale-101 transition-all duration-300'>Go Back Home</Link> */}
+             <GrediantButton text={'Go Back Home'} path='/'/>
         </div>
         <Footer/>
         </div>

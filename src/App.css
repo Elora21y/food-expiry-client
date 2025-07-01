@@ -7,7 +7,7 @@ ul > li > a:hover {
   color: white;
 }
 
-form >fieldset> input:focus {
+form > fieldset > input:focus {
   border: 2px solid #f58f4b;
   outline: none;
   box-shadow: 0 0 5px 8px #f7945220;
@@ -28,9 +28,12 @@ form > input {
   background-color: white;
   border: 1px solid #9ca3af62;
 }
+[data-theme="dark"] form > input {
+  background-color: rgba(41, 40, 40, 0.37);
+}
 
-form  input::placeholder {
-  color: #9ca3afa8;
+form input::placeholder {
+  /* color: #9ca3afa8; */
   font-size: 12px;
 }
 
@@ -43,6 +46,7 @@ form  input::placeholder {
   background-color: #f38a1a;
 }
 
-form label{
-  color: var(--color-accent);
+form label {
+  color: var(--color-accent-content);
 }
+

@@ -4,7 +4,6 @@ import FridgeCard from './FridgeCard';
 import Search from '../../shared/Search';
 import { IoIosArrowDown } from "react-icons/io";
 
-import { motion } from "framer-motion";
 
 const Fridge = () => {
     const data = useLoaderData()
@@ -79,15 +78,12 @@ const Fridge = () => {
             </div>
 {
   foods?.length !== 0 ?
-  <motion.div initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }} 
+  <div 
   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 ">
             {
               foods?.map(food => <FridgeCard key={food._id} food={food}/>)
             }
-            </motion.div>
+            </div>
             :
             <div className="bg-base-200 flex flex-col items-center justify-center p-6 md:p-10 rounded-xl gap-2 text-center mx-auto">
             <h2 className="text-2xl md:text-4xl font-semibold text-red-600">

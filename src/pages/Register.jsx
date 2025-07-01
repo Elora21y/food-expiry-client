@@ -65,7 +65,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="hero min-h-screen text-accent">
+    <div className="hero min-h-screen text-accent-content dark:text-gray-300">
       <div className="hero-content flex-col lg:flex-row-reverse gap-10">
         <div className="text-center lg:text-left hidden lg:flex">
           <Lottie
@@ -80,7 +80,7 @@ const Register = () => {
           <h2 className="text-center text-4xl lg:text-5xl font-bold mb-5 text-secondary">
             Please Register
           </h2>
-          <div className="card bg-base-300 shrink-0 shadow shadow-primary hover:shadow-md duration-500 transition-shadow">
+          <div className="card bg-base-300 dark:bg-base-200 shrink-0 shadow shadow-primary hover:shadow-md duration-500 transition-shadow">
             <div className="card-body w-[300px] sm:w-96 md:w-[400px]">
               {/* form */}
               <form onSubmit={handleRegister} className="fieldset">
@@ -110,19 +110,19 @@ const Register = () => {
                 />
                 {/* password */}
                 <div className="relative">
-                  <label htmlFor="password" className="block text-gray-400">
+                  <label htmlFor="password" className="block">
                     Password
                   </label>
                   <input
                     type={`${showPass ? "text" : "password"}`}
                     name="password"
                     placeholder="Password"
-                    className="input border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] bg-white placeholder:text-gray-300 placeholder:text-xs w-full"
+                    className="input border-[#9ca3af62] focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] bg-white dark:bg-base-100 placeholder:text-xs w-full"
                   />
                   <button
                     onClick={() => setShowPass(!showPass)}
                     type="button"
-                    className="absolute text-gray-400 btn btn-xs btn-ghost z-10 right-1 top-6 hover:bg-white border-0"
+                    className="absolute btn btn-xs btn-ghost z-10 right-1 top-6 hover:bg-white border-0"
                   >
                     {showPass ? (
                       <FaRegEyeSlash size={15} />

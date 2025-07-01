@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { RiDeleteBin6Line, RiEdit2Fill } from "react-icons/ri";
 import Swal from "sweetalert2";
 import UpdateFood from "../pages/UpdateFood";
+import NoFoods from "./NoFoods";
 
 const MyItemList = ({ AddPromiseFood }) => {
   const data = use(AddPromiseFood);
@@ -129,13 +130,7 @@ const MyItemList = ({ AddPromiseFood }) => {
             </tbody>
           </table>
         ) : (
-          <div className="bg-base-200 flex flex-col border border-primary/30 items-center justify-center p-6 md:p-10 rounded-xl min-h-[calc(100vh-285px)] gap-2 text-center mx-auto">
-            <img src="/cross.svg" alt="" className="w-24 md:w-40" />
-            <h2 className="text-2xl md:text-4xl font-semibold text-red-600">
-              No Foods Added
-            </h2>
-            <p>Please go back the Add Food page and added a food for list</p>
-          </div>
+          <NoFoods title={'No Foods Added'} description={'Please go back the Add Food page and added a food for list'}/>
         )}
       </div>
     </div>

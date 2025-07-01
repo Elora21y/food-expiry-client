@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { HiArrowSmRight, HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { Link } from "react-router";
 import { FcExpired } from "react-icons/fc";
+import { motion } from "framer-motion";
 
 const FridgeCard = ({ food }) => {
     const [isHover , setHover] = useState(false)
@@ -16,7 +17,12 @@ const FridgeCard = ({ food }) => {
     _id,
   } = food;
   return (
-    <div className="rounded-2xl font-semibold shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 bg-base-100">
+    <motion.div 
+    initial={{ opacity: 0.4, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, amount: 0.3 }}
+    className="rounded-2xl font-semibold shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 bg-base-100">
       <img
         src={food_photo}
         alt={title}
@@ -54,7 +60,7 @@ const FridgeCard = ({ food }) => {
       >
         View Details {isHover ? <HiOutlineArrowNarrowRight size={20}/>: <HiArrowSmRight size={20}/>}
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

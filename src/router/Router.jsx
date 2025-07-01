@@ -11,6 +11,7 @@ import Loading from "../shared/Loading";
 import Error from "../pages/Error";
 import PrivateRoute from "./PrivateRoute";
 import FoodDetails from "../pages/FoodDetails";
+import About from "../pages/About";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path : '/my-items',
                 element : <PrivateRoute> <MyItems></MyItems></PrivateRoute>
+            },
+            {
+                path : '/about',
+                 Component : About
             }
         ]
     },

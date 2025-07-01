@@ -20,7 +20,7 @@ const Footer = () => {
             </h4>
           </div>
           <p>
-            <strong className="text-base">FreshAlert </strong>
+            <strong className="text-base">Fresh Alert </strong>
             helps you stay one step ahead of food expiry. Add your items, get
             reminders before they spoil, and waste less every day. A smarter
             kitchen starts here!
