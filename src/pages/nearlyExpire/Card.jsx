@@ -13,7 +13,7 @@ const Card = ({ food }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
       viewport={{ once: true, amount: 0.5 }}
-      className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/40 hover:border-primary p-4 font-semibold"
+      className="rounded-2xl  bg-base-100 shadow-primary/40 hover:shadow-lg transition-all duration-500 border border-primary/40 hover:border-primary p-4 font-semibold"
     >
       <img
         src={food_photo}
