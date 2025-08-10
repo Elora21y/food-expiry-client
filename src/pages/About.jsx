@@ -41,18 +41,22 @@ const About = () => {
       <SectionTitle title={"About Fresh Alert"} />
       <div className="flex flex-col justify-between gap-10 lg:flex-row items-center my-16">
         <motion.div 
-        initial={{ opacity: 0.4, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
         className="flex-1">
-          <img
+          <motion.img
+           initial={{ opacity: 0.4, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
             src={vegetables}
             className="w-72 md:max-w-md lg:w-md rounded-t-[50px] rounded-br-[50px] shadow-2xl border-s-6 border-b-8 border-primary sm:-ml-12 lg:ml-0"
             alt=""
           />
 
-          <img
+          <motion.img
+           initial={{ opacity: 0.4, x: -120 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9 }}
+            viewport={{ once: true }}
             src={protein}
             className="w-56 md:max-w-80 lg:w-sm rounded-t-[45px] rounded-br-[50px] shadow-2xl border-s-6 border-b-8 border-primary ml-12 sm:ml-15 md:ml-18 -mt-10 lg:ml-20 xl:-mt-18 xl:ml-22"
             alt=""

@@ -43,6 +43,9 @@ const Footer = () => {
           <a className="link link-hover" href="/fridge">
             Fridge
           </a>
+          <a className="link link-hover" href="/about">
+            About
+          </a>
           {user && (
             <>
               <a className="link link-hover" href="/add-food">
@@ -72,22 +75,22 @@ const Footer = () => {
           <h2 className="md:text-xl font-bold mb-2">Social</h2>
           <div className="flex gap-3 pt-2 social">
             <a href="https://www.facebook.com/elora.yasmin.21" target="_blank">
-              <FaFacebook size={20} />
+              <FaFacebook size={25} />
             </a>
             <a href="https://www.instagram.com/ajanta__elora/" target="_blank">
-              <FaInstagram size={20} />
+              <FaInstagram size={25} />
             </a>
             <a href="https://github.com/Elora21y" target="_blank">
-              <BsGithub size={20} />
+              <BsGithub size={25} />
             </a>
             <a href="https://www.youtube.com/@elora256" target="_blank">
-              <IoLogoYoutube size={20} />
+              <IoLogoYoutube size={25} />
             </a>
           </div>
         </div>
       </footer>
 
-      <p className="pb-5 text-left lg:text-center px-4 text-sm lg:text-base">
+      <p className="pb-5 text-left lg:text-center px-4 text-sm">
         Copyright © {new Date().getFullYear()} - All right reserved by Fresh
         Alert
       </p>

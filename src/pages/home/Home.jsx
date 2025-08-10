@@ -5,6 +5,7 @@ import Expired from './expire/Expired'
 import HowItWork from './HowItWork';
 import FoodStats from './FoodStats';
 import FAQ from './FQA';
+import Feedback from './Feedback';
 
 const Home = () => {
     return (
@@ -15,6 +16,9 @@ const Home = () => {
             <Expired/>
             <FoodStats/>
             <FAQ/>
+         <div className="w-full">
+               <Feedback/>
+         </div>
         </div>
     );
 };
