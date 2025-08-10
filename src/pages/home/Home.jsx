@@ -14,7 +14,7 @@ const Home = () => {
             <HowItWork/>
             <NearlyExpireItem/>
             <Expired/>
-            <FoodStats/>
+            {/* <FoodStats/> */}
             <FAQ/>
          <div className="w-full">
                <Feedback/>
