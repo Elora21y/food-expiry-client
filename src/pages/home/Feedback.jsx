@@ -4,7 +4,7 @@ import image from '/feedback.jpg'
 const Feedback = () => {
   return (
     <div
-      className="w-full bg-cover bg-center py-16 px-6 flex justify-end"
+      className="w-full bg-cover bg-center py-16 px-6 flex justify-end my-16 md:my-20 lg:my-24"
       style={{
         backgroundImage: `url(${image})`, 
       }}
