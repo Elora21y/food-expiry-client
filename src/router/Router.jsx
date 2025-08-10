@@ -12,6 +12,7 @@ import Error from "../pages/Error";
 import PrivateRoute from "./PrivateRoute";
 import FoodDetails from "../pages/FoodDetails";
 import About from "../pages/About";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path : '/about',
                  Component : About
+            },
+            {
+                path : '/privacy-policy',
+                 Component : PrivacyPolicy
             }
         ]
     },

@@ -61,14 +61,14 @@ const Footer = () => {
         <div>
           <h2 className="md:text-xl font-bold mb-2">Terms</h2>
           <p>
-            <a href="#">Privacy Policy</a>
+            <a href="/privacy-policy">Privacy Policy</a>
           </p>
           <p>
             <a href="#">Terms of Service</a>
           </p>
-          <p>
+          {/* <p>
             <a href="#">Cookies</a>
-          </p>
+          </p> */}
         </div>
         {/* Social */}
         <div>
