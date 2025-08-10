@@ -11,7 +11,7 @@ const Footer = () => {
   const { user } = useAuth()
   return (
     <div className=" bg-[#EB5B00] text-white ">
-      <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 p-10 text-sm max-w-7xl mx-auto px-5 sm:px-8">
+      <footer className="flex flex-col lg:flex-row justify-between lg:items-center gap-5 p-10  text-sm max-w-7xl mx-auto px-5 sm:px-8 py-18">
         <aside className="max-w-[480px]">
           <div className="flex gap-1 items-center mb-2">
             <img src={icon} alt="" className="w-10 sm:w-12 md:w-14" />
@@ -29,9 +29,9 @@ const Footer = () => {
           <p className="flex items-center gap-2 mt-2">
             <MdMarkEmailUnread /> support@freshalert.com
           </p>
-          <p className="flex items-center gap-2">
+          {/* <p className="flex items-center gap-2">
             <IoLocationSharp /> Dhaka, Bangladesh
-          </p>
+          </p> */}
         </aside>
 
         {/* Services */}
