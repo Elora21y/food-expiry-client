@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import FoodDetails from "../pages/FoodDetails";
 import About from "../pages/About";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import TermsOfService from "../pages/TermsOfService/TermsOfService";
 
 export const router = createBrowserRouter([
     {
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
             {
                 path : '/privacy-policy',
                  Component : PrivacyPolicy
-            }
+            },
+            {
+                path : '/terms-service',
+                 Component : TermsOfService
+            },
         ]
     },
     {
