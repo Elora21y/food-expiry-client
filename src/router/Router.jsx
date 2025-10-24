@@ -14,7 +14,8 @@ import FoodDetails from "../pages/FoodDetails";
 import About from "../pages/About";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService/TermsOfService";
-import Recipes from "../pages/Recipes";
+import Recipes from "../pages/recipes/Recipes";
+import RecipesDetails from "../pages/recipes/RecipesDetails";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,11 @@ export const router = createBrowserRouter([
                 path : '/food-details/:id',
                 Component : FoodDetails,
                 loader : ({params})=>fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${params.id}`)
+            },
+            {
+                path : '/recipes/:id',
+                Component : RecipesDetails,
+                // loader : ({params})=>fetch(`https://food-expiry-tracker-server-three.vercel.app/recipes/${params.id}`)
             },
             {
                 path : '/add-food',

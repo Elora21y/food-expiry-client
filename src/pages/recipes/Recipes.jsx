@@ -197,15 +197,15 @@ const Recipes = () => {
             alt={recipe.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          {recipe.expiringIngredients.length > 0 && (
+          {/* {recipe.expiringIngredients.length > 0 && (
             <div className="absolute top-2 left-2 badge badge-error gap-1">
               <FiClock className="w-3 h-3" />
               Uses expiring items
             </div>
-          )}
+          )} */}
           <button
             onClick={() => toggleSaveRecipe(recipe.id)}
-            className={`absolute top-2 right-2 btn btn-circle btn-sm ${isSaved ? 'btn-error' : 'btn-ghost bg-white/80'}`}
+            className={`absolute top-2 right-2 btn btn-circle btn-sm ${isSaved ? 'text-red-600' : 'btn-ghost bg-white/80 dark:bg-primary'}`}
           >
             <FiHeart className={`w-4 h-4 ${isSaved ? 'fill-current' : ''}`} />
           </button>
@@ -214,7 +214,7 @@ const Recipes = () => {
         <div className="card-body p-4">
           <h2 className="card-title text-lg">
             {recipe.name}
-            <div className={`badge ${difficulties.find(d => d.value === recipe.difficulty)?.color || 'badge-ghost'}`}>
+            <div className={`badge text-white ${difficulties.find(d => d.value === recipe.difficulty)?.color || 'badge-ghost'}`}>
               {recipe.difficulty}
             </div>
           </h2>
@@ -237,7 +237,7 @@ const Recipes = () => {
               <p className="text-xs font-semibold text-error mb-1">Expiring ingredients:</p>
               <div className="flex flex-wrap gap-1">
                 {recipe.expiringIngredients.map((ing, idx) => (
-                  <span key={idx} className="badge badge-error badge-sm">{ing}</span>
+                  <span key={idx} className="badge badge-white border-gray-400 badge-sm">{ing}</span>
                 ))}
               </div>
             </div>
@@ -272,13 +272,13 @@ const Recipes = () => {
       </motion.div>
 
       {/* Filters */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-base-100 rounded-lg shadow-lg p-4 md:p-6 mb-6"
-      >
+      > */}
         {/* Search */}
-        <div className="form-control mb-4">
+        {/* <div className=" form-control mb-4">
           <div className="input-group">
             <span className="bg-base-200">
               <FiSearch className="w-5 h-5" />
@@ -291,10 +291,10 @@ const Recipes = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Category Filters */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <p className="text-sm font-semibold mb-2">Category</p>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
@@ -308,10 +308,10 @@ const Recipes = () => {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Difficulty Filters */}
-        <div>
+        {/* <div>
           <p className="text-sm font-semibold mb-2">Difficulty</p>
           <div className="flex flex-wrap gap-2">
             {difficulties.map((diff) => (
@@ -324,8 +324,8 @@ const Recipes = () => {
               </button>
             ))}
           </div>
-        </div>
-      </motion.div>
+        </div> */}
+      {/* </motion.div> */}
 
       {/* Stats */}
       <motion.div
@@ -339,11 +339,11 @@ const Recipes = () => {
           <div className="stat-desc">Available to cook</div>
         </div>
         
-        <div className="stat">
+        {/* <div className="stat">
           <div className="stat-title">Filtered Results</div>
           <div className="stat-value text-secondary">{filteredRecipes.length}</div>
           <div className="stat-desc">Matching your filters</div>
-        </div>
+        </div> */}
         
         <div className="stat">
           <div className="stat-title">Saved Recipes</div>
