@@ -14,6 +14,7 @@ import FoodDetails from "../pages/FoodDetails";
 import About from "../pages/About";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService/TermsOfService";
+import Recipes from "../pages/Recipes";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path : '/about',
                  Component : About
+            },
+            {
+                path : '/recipes',
+                 Component : Recipes
             },
             {
                 path : '/privacy-policy',
