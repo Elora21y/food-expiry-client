@@ -27,17 +27,19 @@ export const router = createBrowserRouter([
             {
                 index : true,
                 Component : Home,
-                loader :()=>fetch('https://food-expiry-tracker-server-three.vercel.app/foods')
+                // loader :()=>fetch('https://food-expiry-tracker-server-three.vercel.app/foods')
+                loader :()=>fetch(`${import.meta.env.VITE_base_url}/foods`)
             },
             {
                 path : '/fridge',
                 Component : Fridge,
-                loader : ()=>fetch('https://food-expiry-tracker-server-three.vercel.app/foods')
+                loader :()=>fetch(`${import.meta.env.VITE_base_url}/foods`)
             },
             {
                 path : '/food-details/:id',
                 Component : FoodDetails,
-                loader : ({params})=>fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${params.id}`)
+                loader : ({params})=>fetch(`${import.meta.env.VITE_base_url}/foods/${params.id}`)
+                // loader : ({params})=>fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${params.id}`)
             },
             {
                 path : '/recipes/:id',

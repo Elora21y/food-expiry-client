@@ -13,7 +13,7 @@ const Expired = () => {
     setFoods(
       data.filter(
         (food) => food.expire_date < new Date().toISOString().slice(0, 10)
-      )
+      ).slice(0,6)
     );
   }, [data]);
   return (
