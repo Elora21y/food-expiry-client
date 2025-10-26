@@ -85,7 +85,7 @@ const MyItemList = ({ AddPromiseFood }) => {
                   </td>
                   <td>{food.foodType}</td>
                   <td>{food.expire_date}</td>
-                  <td>{food.quantity}</td>
+                  <td>{food.quantity} {food.unit}</td>
                   <th>
                     <div className="flex gap-4 items-center ">
                       {/* edit button*/}

@@ -65,7 +65,9 @@ const AddFood = () => {
         <h2 className="mb-3 text-3xl font-bold text-center">
           Add Food
         </h2>
-        <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 max-w-lg mx-auto">
+       
+       <div className="grid lg:grid-cols-2  max-w-lg mx-auto lg:max-w-6xl">
+         <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 ">
           {/* title */}
           <label className="label">Food Title</label>
           <input
@@ -104,6 +106,7 @@ const AddFood = () => {
                 <option value="">Select Unit</option>
                 <option value="kg">kg</option>
                 <option value="g">g</option>
+                <option value="dozen">dozen</option>
                 <option value="liter">liter</option>
                 <option value="ml">ml</option>
                 <option value="pieces">pieces</option>
@@ -114,6 +117,57 @@ const AddFood = () => {
             </div>
         </fieldset>
 
+        {/* Storage & Purchase Info */}
+        <fieldset className="fieldset bg-base-200 border-primary rounded-box border p-4 ">
+          <legend className="fieldset-legend">Storage & Purchase Details</legend>
+
+          {/* Storage Location */}
+          <label className="label">
+            <span className="label-text font-semibold">Storage Location *</span>
+          </label>
+          <select className="select w-full" name="storage_location" required defaultValue="">
+            <option value="" disabled>Where to store?</option>
+            <option value="Refrigerator">Refrigerator </option>
+            <option value="Freezer">Freezer </option>
+            <option value="Pantry">Pantry </option>
+            <option value="Room Temperature">Room Temperature </option>
+            <option value="Cabinet">Cabinet</option>
+          </select>
+
+          {/* Purchase Price */}
+          <label className="label mt-3">
+            <span className="label-text font-semibold">Purchase Price (৳)</span>
+          </label>
+          <input
+            type="number"
+            step="0.01"
+            className="input w-full"
+            placeholder=" e.g. 80"
+            name="purchase_price"
+            min="0"
+          />
+
+          {/* Is Opened Checkbox */}
+          <div className="form-control mt-4">
+            <label className="label cursor-pointer justify-start gap-3">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-primary"
+                name="is_opened"
+              />
+              <span className="label-text font-semibold">
+                Package already opened?
+              </span>
+            </label>
+            <span className="text-xs text-base-content/60 ml-5">
+              Check this if you've already opened the package
+            </span>
+          </div>
+        </fieldset>
+       </div>
+
+<div className="">
+  
         {/*Food type selected */}
         <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 min-w-72 sm:min-w-96 md:min-w-lg mx-auto">
           <legend className="fieldset-legend">Select Food Type</legend>
@@ -162,54 +216,6 @@ const AddFood = () => {
           </div>
         </fieldset>
 
-        {/* Storage & Purchase Info */}
-        <fieldset className="fieldset bg-base-200 border-primary rounded-box border p-4 max-w-lg mx-auto mt-4">
-          <legend className="fieldset-legend">Storage & Purchase Details</legend>
-
-          {/* Storage Location */}
-          <label className="label">
-            <span className="label-text font-semibold">Storage Location *</span>
-          </label>
-          <select className="select w-full" name="storage_location" required defaultValue="">
-            <option value="" disabled>Where to store?</option>
-            <option value="Refrigerator">Refrigerator </option>
-            <option value="Freezer">Freezer </option>
-            <option value="Pantry">Pantry </option>
-            <option value="Room Temperature">Room Temperature </option>
-            <option value="Cabinet">Cabinet</option>
-          </select>
-
-          {/* Purchase Price */}
-          <label className="label mt-3">
-            <span className="label-text font-semibold">Purchase Price (৳)</span>
-          </label>
-          <input
-            type="number"
-            step="0.01"
-            className="input w-full"
-            placeholder=" e.g. 80"
-            name="purchase_price"
-            min="0"
-          />
-
-          {/* Is Opened Checkbox */}
-          <div className="form-control mt-4">
-            <label className="label cursor-pointer justify-start gap-3">
-              <input
-                type="checkbox"
-                className="checkbox checkbox-primary"
-                name="is_opened"
-              />
-              <span className="label-text font-semibold">
-                Package already opened?
-              </span>
-            </label>
-            <span className="text-xs text-base-content/60 ml-5">
-              Check this if you've already opened the package
-            </span>
-          </div>
-        </fieldset>
-
         {/* Expiry Date*/}
         <fieldset className="fieldset bg-base-200 border-primary rounded-box  border p-4 max-w-lg mx-auto">
           <legend className="fieldset-legend ">Expired Date</legend>
@@ -218,6 +224,7 @@ const AddFood = () => {
             <input type="date" name="expire_date" required/>
           </label>
         </fieldset>
+</div>
 
          {/* Tags */}
         <fieldset className="fieldset bg-base-200 border-primary rounded-box border p-4 max-w-lg mx-auto mt-4">
