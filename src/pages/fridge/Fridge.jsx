@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router';
 import FridgeCard from './FridgeCard';
 import Search from '../../shared/Search';
 import { IoIosArrowDown } from "react-icons/io";
+import {motion} from 'framer-motion'
 
 
 const Fridge = () => {
@@ -30,15 +31,36 @@ const Fridge = () => {
   
     return (
         <div className="text-accent-content text-sm">
-            <div className="text-center mb-12">
+          {/* hero  */}
+            <div className="relative w-screen left-1/2 right-1/2  -mx-[51vw] h-[320px] md:h-[380px]  bg-[url('/fridge.jpg')] bg-cover bg-center -mt-16 mb-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/60 to-transparent" />
+        <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{amount : 0.5, once:true}}
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 gap-3">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold  drop-shadow-lg">
+            Fridge Inventory
+          </h1>
+          <p className="lg:text-lg drop-shadow-md">
+           Keep track of what’s stored, stay organized, and reduce food waste easily.
+          </p>
+           {/* search */}
+  <div className="w-full">
+    <Search setFoods={setFoods} data={data} />
+  </div>
+        </motion.div>
+      </div>
+
+            {/* <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-5xl font-bold text-secondary-content">
               My Fridge Inventory
           </h2>
-        </div>
+        </div> */}
             <div className=" flex justify-end items-start">
                 <div></div>
- {/* search */}
-<Search setFoods={setFoods} data={data}/>
+
         
       {/* filter */}
       <div className="flex flex-col justify-center items-end mr-2 mb-10 text-accent-content">

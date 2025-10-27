@@ -771,12 +771,30 @@ const Recipes = () => {
   };
 
   return (
-    <div className="min-h-screen  p-4 ">
+    <div className="min-h-screen ">
       {/* Recipe Details Modal */}
       <RecipeDetailsModal recipe={selectedRecipe} />
-
+{/* hero  */}
+            <div className="relative w-screen left-1/2 right-1/2 -mx-[52vw] sm:-mx-[51vw] h-[300px] lg:h-[380px]  bg-[url('/recipe.jpg')] bg-cover bg-center -mt-16 mb-6">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/60 to-transparent" />
+        <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{amount : 0.5, once:true}}
+        className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 lg:gap-2">
+           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 flex items-center justify-center gap-3">
+          <PiChefHatLight className="w-10 h-10 text-primary" />
+          Recipe Suggestions
+        </h1>
+        <p >
+          Cook delicious meals with your expiring ingredients
+        </p>
+        
+        </motion.div>
+      </div>
       {/* Header */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
@@ -788,7 +806,7 @@ const Recipes = () => {
         <p className="text-base-content/70">
           Cook delicious meals with your expiring ingredients
         </p>
-      </motion.div>
+      </motion.div> */}
 
       {/* Filters */}
       <motion.div

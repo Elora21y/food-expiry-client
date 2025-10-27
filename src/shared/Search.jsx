@@ -18,7 +18,7 @@ const Search = ({setFoods , data}) => {
     return (
         <div>
             <form onSubmit={(e)=> e.preventDefault()} className="flex  justify-center items-center gap-4">
-          <label className="input">
+          <label className="input bg-primary/30">
             <svg
               className="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ const Search = ({setFoods , data}) => {
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" value={searchText} placeholder="Search Food by title, category" onChange={ handleChange }/>
+            <input type="search" value={searchText} placeholder="Search Food by title, category" onChange={ handleChange } className='text-white'/>
           </label>
 
           <button label='Search' type='Submit'></button>
