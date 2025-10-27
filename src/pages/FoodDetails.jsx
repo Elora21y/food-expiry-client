@@ -4,10 +4,15 @@ import { FaCircleArrowLeft } from "react-icons/fa6";
 import { SlNotebook } from "react-icons/sl";
 import { MdDateRange, MdFoodBank } from "react-icons/md";
 import { FaStore } from "react-icons/fa";
+import { TbCurrencyTaka } from "react-icons/tb";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import CountDown from "../shared/CountDown";
 import { motion } from "framer-motion";
+import { HiTag } from "react-icons/hi";
+import { LuStore } from "react-icons/lu";
+
+import { PiChefHat } from "react-icons/pi";
 
 const FoodDetails = () => {
   const { user } = useAuth();
@@ -18,16 +23,25 @@ const FoodDetails = () => {
     expire_date,
     added_date,
     quantity,
+    unit,
     food_photo,
     description,
     user_email,
     text: initialText,
     postedDate: initialPostedDate,
     _id,
+    storage_location,
+    purchase_price,
+    status,
+    is_opened,
+    opened_date,
+    recipe_suggestions,
+    tags,
+    waste_reason,
   } = useLoaderData();
   const [note, setNote] = useState(initialText || "");
   const [noteDate, setNoteDate] = useState(initialPostedDate || "");
-  const [isNote , setIsNote] = useState(false)
+  const [isNote, setIsNote] = useState(false);
 
   const handleAddNote = (e, id) => {
     e.preventDefault();
@@ -36,7 +50,7 @@ const FoodDetails = () => {
     const note = { text, postedDate };
     if (!text) return toast.error("First add something ");
     // console.log(note);
-    fetch(`https://food-expiry-tracker-server-three.vercel.app/foods/${id}`, {
+    fetch(`${import.meta.env.VITE_base_url}/foods/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -63,17 +77,18 @@ const FoodDetails = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="max-w-2xl mx-auto px-3 md:px-5 font-semibold text-accent-content "
+      className="max-w-2xl lg:max-w-4xl mx-auto px-3 md:px-5 font-semibold text-accent-content "
     >
-      <span onClick={() => navigate(-1)}>
-        <FaCircleArrowLeft size={25} className="text-primary mb-5" />
-      </span>
+      <button onClick={() => navigate(-1)} className="text-primary mb-5 btn">
+        <FaCircleArrowLeft size={25} />
+        Back
+      </button>
 
-      <div className=" space-y-5 bg-primary/10 p-5 md:p-8 py-8 rounded-xl shadow-md shadow-primary/30 hover:shadow-lg duration-500 transition-all">
+      <div className=" space-y-5 bg-primary/10 p-5 md:p-6 pb-8 md:pb-16 rounded-xl shadow-md shadow-primary/30 hover:shadow-lg duration-500 transition-all">
         <img
           src={food_photo}
           alt={title}
-          className="max-h-36 md:max-h-52 lg:max-h-64 xl:max-h-68 w-full object-cover rounded-lg"
+          className="max-h-48 sm:max-h-60 lg:max-h-84 w-full object-cover rounded-lg"
         />
         <div className="text-sm space-y-1">
           <div className="flex justify-between items-center">
@@ -82,7 +97,8 @@ const FoodDetails = () => {
               {title}
             </h3>
 
-            {new Date(expire_date + "T23:59:59").getTime() >  new Date().getTime() ? (
+            {new Date(expire_date + "T23:59:59").getTime() >
+            new Date().getTime() ? (
               <CountDown expireDate={expire_date} />
             ) : (
               <div className="badge text-xs ml-2 badge-error text-white bg-red-500 border-0">
@@ -91,7 +107,7 @@ const FoodDetails = () => {
             )}
           </div>
 
-          <div className=" flex gap-x-5 gap-y-1 flex-wrap">
+          <div className=" flex gap-x-5 lg:gap-x-10 xl:gap-x-16 gap-y-1 flex-wrap">
             <p className="flex items-center gap-1">
               <MdFoodBank className="text-primary" />
               <span>{foodType}</span>
@@ -99,18 +115,66 @@ const FoodDetails = () => {
 
             <p className="flex items-center gap-1">
               <FaStore className="text-primary" />
-              <span>{quantity}</span>
+              <span>
+                {quantity}
+                {unit}
+              </span>
             </p>
             {/* add */}
             <p className="flex items-center gap-1">
               <MdDateRange className="text-primary" />
               <span>{added_date}</span>
             </p>
+            <p className="flex items-center">
+              <TbCurrencyTaka className="text-primary" size={20} />
+              <span>{purchase_price}</span>
+            </p>
+             {storage_location && (
+              <span className="flex items-center gap-1">
+                <LuStore className="text-primary" size={18} />
+                <span>{storage_location}</span>
+              </span>
+            )}
           </div>
 
-          {/* food Description */}
+          {description && (
           <p className="first-letter:text-lg">{description}</p>
+          )}
+
+          {/* Tags Section */}
+          {tags && tags.length > 0 && (
+            <div className="space-y-2 flex gap-4 py-3">
+              <h4 className="text-primary text-base flex items-center gap-2">
+                <HiTag size={18} />
+                Tags:
+              </h4>
+              <div className="flex flex-wrap gap-4">
+                {tags.map((tag, idx) => (
+                  <span key={idx} className="badge border-gray-300  bg-transparent text-gray-500 dark:text-gray-300">
+                   # {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Recipe Suggestions */}
+          {recipe_suggestions && recipe_suggestions.length > 0 && (
+            <div className="space-y-2">
+              <h4 className="text-primary text-base flex items-center gap-2">
+                <PiChefHat size={20}/> Recipe Ideas:
+              </h4>
+              <ul >
+                {recipe_suggestions.map((recipe, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                     <span className="text-primary mt-1">•</span> {recipe}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
+        {/* note */}
         {note && (
           <div className="mt-5 space-y-2">
             <h4 className="text-primary text-base mb-2 flex items-center gap-1">
@@ -131,7 +195,7 @@ const FoodDetails = () => {
           Add Note :
         </h4>
 
-        <form onSubmit={(e) => handleAddNote(e, _id)} >
+        <form onSubmit={(e) => handleAddNote(e, _id)}>
           <textarea
             className="textarea w-full border-gray-300 focus:border-2 focus:border-primary-300 focus:border-[#FB9E3A] focus:outline-none focus:ring-4 focus:ring-[#f7945220] placeholder:text-gray-300 placeholder:text-xs bg-transparent"
             placeholder="Write note..."
@@ -143,9 +207,9 @@ const FoodDetails = () => {
             <button
               type="submit"
               className={`btn hover:text-white hover:bg-primary text-primary border border-primary btn-soft mt-4 bg-transparent ${
-                user?.email !== user_email && "cursor-not-allowed opacity-60" 
+                user?.email !== user_email && "cursor-not-allowed opacity-60"
               } 
-              ${isNote ? '' : "cursor-not-allowed opacity-60"}`}
+              ${isNote ? "" : "cursor-not-allowed opacity-60"}`}
               disabled={user?.email !== user_email}
             >
               Add Note

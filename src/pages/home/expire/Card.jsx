@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router';
 
 const Card = ({food}) => {
      const {
@@ -18,6 +19,7 @@ const Card = ({food}) => {
       transition={{ duration: 0.4 }}
       viewport={{ once: true, amount: 0.5 }}
         className="rounded-2xl font-semibold shadow-primary/20 hover:shadow-lg transition-all duration-500 hover:scale-102 border border-primary/30 hover:border-primary p-4 bg-primary/15">
+        <Link to={`/food-details/${_id}`}>
       <img
         src={food_photo}
         alt={title}
@@ -46,6 +48,7 @@ const Card = ({food}) => {
           </span>
         </div>
         </div>
+        </Link>
     </motion.div>
     );
 };
