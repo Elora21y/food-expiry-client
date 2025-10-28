@@ -13,7 +13,7 @@ const Home = () => {
             <Banner/>
             <HowItWork/>
             <NearlyExpireItem/>
-            <Expired/>
+            <Expired title={true} showButton={true} slice={3} />
             {/* <FoodStats/> */}
             <FAQ/>
          <div className="w-full">

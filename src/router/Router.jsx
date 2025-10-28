@@ -16,6 +16,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService/TermsOfService";
 import Recipes from "../pages/recipes/Recipes";
 import RecipesDetails from "../pages/recipes/RecipesDetails";
+import Expired from "../pages/home/expire/Expired";
 
 export const router = createBrowserRouter([
     {
@@ -69,6 +70,11 @@ export const router = createBrowserRouter([
             {
                 path : '/terms-service',
                  Component : TermsOfService
+            },
+            {
+                path : '/all-expired-foods',
+                element : <Expired showButton={false} title={false} back={true}/>,
+                loader: () => fetch(`${import.meta.env.VITE_base_url}/foods`)
             },
         ]
     },
