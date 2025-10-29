@@ -24,7 +24,7 @@ const Expired = ({ title, slice, showButton, back }) => {
 
     setFoods(filtered);
   }, [data, slice]);
-  console.log(foods, data);
+  // console.log(foods, data);
   return (
     <>
       <div className="text-accent-content text-sm py-15  my-12 md:my-14 lg:my-18">
